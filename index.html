@@ -6,15 +6,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Tweetmaps</title>
+    <!-- init bootstrap -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
         crossorigin="anonymous">
+    <!-- grid css file -->
     <link rel="stylesheet" type="text/css" href="./assets/css/grid.css">
+    <!-- style css file -->
     <link rel="stylesheet" type="text/css" href="./assets/css/style.css">
+    <!-- some google fonts -->
     <link href="https://fonts.googleapis.com/css?family=Pacifico|Yanone+Kaffeesatz" rel="stylesheet">
 </head>
 
 <body>
+    <!-- this div holds the grid; anything outside of this will break stuff -->
     <div class="grid-container p-2">
+        <!-- holds input form and list -->
         <div class="content-box">
             <form class="m-2">
                 <div class="form-group">
@@ -30,12 +36,14 @@
                 <button type="submit" class="btn btn-primary">Submit</button>
             </form>
         </div>
+        <!-- this div is duplicated twice to fix a display bug having to do with the drop-shadow -->
         <div class="logo-container">
             <span class="logo-text">Tweetmaps</span>
         </div>
         <div class="logo-container-underlay">
             <span class="logo-text-underlay">Tweetmaps</span>
         </div>
+        <!-- place holder for some kind of controls on map -->
         <div class="map-control-box">
             <div class="map-control">
             </div>
