@@ -8,6 +8,7 @@
   grid-gap: 10px;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
   grid-template-rows: 1fr 9fr 125px;
+  overflow: hidden;
 }
 
 .content-box {
@@ -15,6 +16,7 @@
   grid-column-end: 4;
   grid-row-start: 1;
   grid-row-end: 4;
+  min-width: 200px;
 }
 
 .map-control-box {
