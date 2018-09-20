@@ -1,0 +1,30 @@
+.grid-container {
+  background-color: red;
+}
+
+.content-box {
+  background-color: white;
+  border-top: 1px solid black;
+  border-right: 1px solid black;
+  border-bottom: 1px solid black;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+}
+
+.map-control {
+  background-color: white;
+  border: 1px solid black;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+}
+
+.logo-container {
+}
+
+.logo-text {
+  font-size: 72px;
+  background: linear-gradient(-90deg, green, red);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-family: "Pacifico", cursive;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: black;
+}
