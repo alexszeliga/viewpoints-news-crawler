@@ -6,16 +6,31 @@
     right: 0;
     background-color: red;
     display: grid;
-    grid-template-columns: auto auto auto auto auto auto auto auto auto auto auto auto;
-    grid-template-rows: auto auto auto auto auto auto auto auto auto auto auto auto;
+    grid-gap: 10px;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 20px auto 50px 20px;
 }
 
 .content-box {
     background-color: white;
-    border: 1px solid black;
+    border-top: 1px solid black;
+    border-right: 1px solid black;
+    border-bottom: 1px solid black;
     grid-column-start: 1;
-    grid-column-end: 3;
+    grid-column-end: 4;
     grid-row-start: 2;
-    grid-row-end: 12;
+    grid-row-end: 4;
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+}
+
+.map-control {
+    background-color: white;
+    border: 1px solid black;
+    width: 50px;
+    grid-column-start: 12;
+    grid-column-end: 12;
+    grid-row-start: 3;
+    grid-row-end: 4;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+    height: 50px;
 }
