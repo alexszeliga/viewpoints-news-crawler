@@ -1,0 +1,59 @@
+.grid-container {
+    background-color: red;
+}
+
+.content-box {
+    position: relative;
+    background-color: white;
+    border-top: 1px solid black;
+    border-right: 1px solid black;
+    border-bottom: 1px solid black;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+}
+
+.map-control {
+    background-color: white;
+    border: 1px solid black;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+}
+
+.logo-container {
+    position: relative;
+}
+
+.logo-text {
+    font-size: 72px;
+    background: linear-gradient(-60deg, green, red);
+    background-clip: content-box;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    /* font-family: "Pacifico", cursive; */
+    font-family: "Yanone Kaffeesatz", sans-serif;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: black;
+    line-height: 1;
+    letter-spacing: -2.5px;
+}
+
+.logo-text-underlay {
+    font-size: 72px;
+    /* font-family: "Pacifico", cursive; */
+    font-family: "Yanone Kaffeesatz", sans-serif;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: black;
+    line-height: 1;
+    letter-spacing: -2.5px;
+    text-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+}
+
+.tweet-table {
+    position: absolute;
+    bottom: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+}
+
+.tweet-table-box {
+    position: relative;
+}
