@@ -2,6 +2,15 @@
     background-color: red;
 }
 
+#map-container {
+    height: 100%; 
+    width: 100%; 
+    position:absolute; 
+    top: 0; 
+    left: 0;
+    z-index: 0;
+}
+
 .content-box {
     position: relative;
     background-color: white;
