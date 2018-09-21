@@ -20,44 +20,47 @@
 <body>
     <!-- this div holds the grid; anything outside of this will break stuff -->
     <div class="grid-container p-2">
-        <!-- holds input form and list -->
-        <div class="content-box">
-            <form class="m-2">
-                <div class="form-group">
-                    <label for="locationInput">City</label>
-                    <input type="city" class="form-control" id="locationInput" placeholder="Denver, CO">
+        <div id="map-container"></div>
+            <!-- holds input form and list -->
+            <div class="content-box">
+                <form class="m-2">
+                    <div class="form-group">
+                        <label for="locationInput">City</label>
+                        <input type="city" class="form-control" id="locationInput" placeholder="Denver, CO">
+
+                    </div>
+                    <div class="form-group">
+                        <label for="hashtagInput">Hashtag</label>
+                        <input type="query" class="form-control" id="exampleInputPassword1" placeholder="Hashtag">
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+                <div class=tweet-table-box>
+                    <div class="tweet-table">
+
+
+
+                    </div>
 
                 </div>
-                <div class="form-group">
-                    <label for="hashtagInput">Hashtag</label>
-                    <input type="query" class="form-control" id="exampleInputPassword1" placeholder="Hashtag">
+            </div>
+            <!-- this div is duplicated twice to fix a display bug having to do with the drop-shadow -->
+            <div class="logo-container">
+                <span class="logo-text">Tweetmaps</span>
+            </div>
+            <div class="logo-container-underlay">
+                <span class="logo-text-underlay">Tweetmaps</span>
+            </div>
+            <!-- place holder for some kind of controls on map -->
+            <div class="map-control-box">
+                <div class="map-control">
                 </div>
-
-                <button type="submit" class="btn btn-primary">Submit</button>
-            </form>
-            <div class=tweet-table-box>
-                <div class="tweet-table">
-
-
-
-                </div>
-
             </div>
         </div>
-        <!-- this div is duplicated twice to fix a display bug having to do with the drop-shadow -->
-        <div class="logo-container">
-            <span class="logo-text">Tweetmaps</span>
-        </div>
-        <div class="logo-container-underlay">
-            <span class="logo-text-underlay">Tweetmaps</span>
-        </div>
-        <!-- place holder for some kind of controls on map -->
-        <div class="map-control-box">
-            <div class="map-control">
-            </div>
 
-        </div>
-    </div>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBqNFzgS2GUY_xDEFsYOu44N_XQCfBNYPs&callback=initMap"></script>
+    <script src="assets/javascript/app.js"></script>
 
 </body>
 
