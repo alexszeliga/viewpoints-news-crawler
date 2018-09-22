@@ -1,5 +1,7 @@
 // creating the modal to display news story info
 
+window.allData = [];
+
 $("#submitButton").on("click", function(event) {
   event.preventDefault();
   var modalBox = $("<div>");
@@ -11,6 +13,7 @@ $("#submitButton").on("click", function(event) {
   modalBox.append(closeButton);
   $(".grid-container").append(modalBox);
   console.log(modalBox);
+  console.log(allData);
 });
 
 $(document).on("click", ".closeModal", function(event) {
