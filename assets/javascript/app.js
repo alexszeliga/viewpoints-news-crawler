@@ -1,13 +1,38 @@
-var map;
-var infoWindow;
+google.charts.load('current', {
+  'packages':['geochart'],
+  'mapsApiKey': 'AIzaSyBqNFzgS2GUY_xDEFsYOu44N_XQCfBNYPs'
+});
 
-function initMap() {
-  map = new google.maps.Map(document.getElementById("map-container"), {
-    center: { lat: 39.9526, lng: -75.1327 },
-    zoom: 2
-  });
+google.charts.setOnLoadCallback(drawRegionsMap);
 
-  infoWindow = new google.maps.InfoWindow();
+function drawRegionsMap() {
+  var data = google.visualization.arrayToDataTable([
+    ['Country', 'Sentiment Score'],
+    ['Qatar', .10],
+    ['United Kingdom', .20],
+    ['Canada', .30],
+    ['Australia', .40],
+    ['Ireland', .50],
+    ['Israel', .60],
+    ['United States', .70],
+    ['India', .80],
+    ['Russia', .90]
+  ]);
 
-  infoWindow.open(map);
+  var options = {
+    colorAxis: {minValue: 0, colors: ['#0000FF', '#800080', '#960016'], maxValue: 1},
+    backgroundColor: {fill: '#2d2d2d', strokeWidth: 0},
+    datalessRegionColor: '#7c7c7c',
+    defaultColor: '#7c7c7c',
+    displayMode: 'regions',
+    legend: {textStyle: {color: 'black', fontSize: 20}},
+    legend: {numberFormat:'#%'},
+    region: 'world',
+    resolution: 'countries',
+    keepAspectRatio: true
+  };
+
+  var chart = new google.visualization.GeoChart(document.getElementById('map-container'));
+
+  chart.draw(data, options);
 }
