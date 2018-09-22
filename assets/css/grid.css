@@ -37,22 +37,12 @@
 
 .logo-container {
   display: grid;
-  grid-column-start: 1;
-  grid-column-end: 3;
+  grid-column-start: 11;
+  grid-column-end: 13;
   grid-row-start: 4;
   grid-row-end: 5;
-  justify-content: start;
+  justify-content: end;
   z-index: 10;
-}
-
-.logo-container-underlay {
-  display: grid;
-  grid-column-start: 1;
-  grid-column-end: 3;
-  grid-row-start: 4;
-  grid-row-end: 5;
-  justify-content: start;
-  z-index: 1;
 }
 
 .modalBox {
