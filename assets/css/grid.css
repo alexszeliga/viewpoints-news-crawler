@@ -15,7 +15,7 @@
   grid-column-start: 1;
   grid-column-end: 4;
   grid-row-start: 1;
-  grid-row-end: 4;
+  grid-row-end: 2;
   min-width: 200px;
 }
 
@@ -31,24 +31,33 @@
 .map-control {
   width: 50px;
   height: 100%;
+  z-index: 2;
+  display: none;
 }
 
 .logo-container {
   display: grid;
-  grid-column-start: 10;
-  grid-column-end: 13;
-  grid-row-start: 1;
-  grid-row-end: 2;
-  justify-content: end;
+  grid-column-start: 1;
+  grid-column-end: 3;
+  grid-row-start: 4;
+  grid-row-end: 5;
+  justify-content: start;
   z-index: 10;
 }
 
 .logo-container-underlay {
   display: grid;
-  grid-column-start: 10;
+  grid-column-start: 1;
+  grid-column-end: 3;
+  grid-row-start: 4;
+  grid-row-end: 5;
+  justify-content: start;
+  z-index: 1;
+}
+
+.modalBox {
+  grid-column-start: 4;
   grid-column-end: 13;
   grid-row-start: 1;
-  grid-row-end: 2;
-  justify-content: end;
-  z-index: 1;
+  grid-row-end: 4;
 }
