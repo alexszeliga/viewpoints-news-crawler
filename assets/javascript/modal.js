@@ -2,17 +2,19 @@
 
 window.allData = [];
 
+var articleDataModel = {
+  picUrl: "#",
+  articleUrl: "#",
+  articleTitle: "#",
+  articleSummary:
+    "...passersby were amazed by the unusually large amounts of blood.",
+  articleSentimentScore: -2,
+  articleSource: "The Onion",
+  sourceLogoUrl: "#"
+};
+
 $("#submitButton").on("click", function(event) {
   event.preventDefault();
-  var modalBox = $("<div>");
-  var closeButton = $("<button>");
-  closeButton.text("Click here to close this modal");
-  closeButton.addClass("closeModal");
-  modalBox.text("Blah!");
-  modalBox.addClass("modalBox");
-  modalBox.append(closeButton);
-  $(".grid-container").append(modalBox);
-  console.log(modalBox);
   console.log(allData);
 });
 
