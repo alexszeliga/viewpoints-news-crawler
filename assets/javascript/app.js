@@ -43,4 +43,5 @@ function drawRegionsMap() {
     console.log("-----------")
     }
   });
+
 }
