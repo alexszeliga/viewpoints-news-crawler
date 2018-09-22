@@ -35,4 +35,13 @@ function drawRegionsMap() {
   var chart = new google.visualization.GeoChart(document.getElementById('map-container'));
 
   chart.draw(data, options);
+
+  google.visualization.events.addListener(chart, 'select', function() {
+    var selection = chart.getSelection();
+    if (selection.length) {
+    console.log("Country Clicked: " + data.getValue(selection[0].row, 0));
+    console.log("-----------")
+    }
+  });
+
 }
