@@ -76,3 +76,7 @@ $(document).on("click", ".closeModal", function(event) {
   console.log("You clicked the close button");
   $("div").remove(".modalBox");
 });
+
+$(window).on("resize", function() {
+  drawRegionsMap();
+});
