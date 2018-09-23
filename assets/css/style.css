@@ -22,10 +22,6 @@
   box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
 }
 
-#map-container path:hover {
-  stroke-width: 5px;
-}
-
 .map-control {
   background-color: white;
   border: 1px solid black;

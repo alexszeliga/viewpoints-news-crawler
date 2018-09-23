@@ -33,7 +33,7 @@ function drawRegionsMap() {
   var options = {
     colorAxis: {
       minValue: 0,
-      colors: ["#00AEEF", "#F7F2DA", "#F26422"],
+      colors: ["#00AEEF", "#FFFDE7", "#F15A22"],
       maxValue: 1
     },
     backgroundColor: { fill: "white", strokeWidth: 0 },
