@@ -1,392 +1,561 @@
 // Script to pull in news sources from NewsAPI by country and then run sentiment analysis and store data in allData.
 
-$(document).ready(function() {
-  // ------------------------VARIABLES------------------------
+$(document).ready(function () {
+    // ------------------------VARIABLES------------------------
 
-  var qatarData = [];
-  var ukData = [];
-  var canadaData = [];
-  var australiaData = [];
-  var irelandData = [];
-  var isrealData = [];
-  var usaData = [];
-  var indiaData = [];
-  var russiaData = [];
 
-  allData = [
-    qatarData,
-    ukData,
-    canadaData,
-    australiaData,
-    irelandData,
-    isrealData,
-    usaData,
-    indiaData,
-    russiaData
-  ];
+    window.allData = {
+        "qatar": [],
+        "uk": [],
+        "canada": [],
+        "australia": [],
+        "ireland": [],
+        "isreal": [],
+        "usa": [],
+        "india": [],
+        "russia": []
+    }
 
-  // ------------------------ON CLICK EVENT HANDLE------------------------
+    window.scores = {
+        "qatar": [],
+        "uk": [],
+        "canada": [],
+        "australia": [],
+        "ireland": [],
+        "isreal": [],
+        "usa": [],
+        "india": [],
+        "russia": []
+    }
 
-  $("#submitButton").on("click", function(event) {
-    event.preventDefault();
+    
 
-    qatarNews();
-    ukNews();
-    canadaNews();
-    australiaNews();
-    irelandNews();
-    isrealNews();
-    usaNews();
-    indiaNews();
-    russiaNews();
-    console.log(allData);
-  });
+    // ------------------------ON CLICK EVENT HANDLE------------------------
 
-  // ------------------------UNDERLYING FUNCTIONS------------------------
 
-  //  THESE ARE THE FUNCTIONS TO GET NEWS FOR EACH COUNTRY RUN THE SENTIMENT ANALYSIS AND THEN RETURN AN ARRAY OF OBJECTS FOR EACH CONTRY //
+    $("#submitButton").on("click", function (event) {
 
-  function qatarNews() {
-    var searchString = $("#topicInput")
-      .val()
-      .trim();
+        event.preventDefault();
 
-    var queryURL =
-      "https://newsapi.org/v2/everything?q=" +
-      searchString +
-      "&language=en&sortBy=relevancy&pageSize=100&sources=al-jazeera-english&apiKey=2877da71f97e4fa28fd788acd1887709";
+        qatarNews();
+        ukNews();
+        canadaNews();
+        australiaNews();
+        irelandNews();
+        isrealNews();
+        usaNews();
+        indiaNews();
+        russiaNews();
 
-    $.ajax({
-      url: queryURL,
-      METHOD: "GET",
-      language: "en"
-    }).then(function(response) {
-      for (var i = 0; i < response.articles.length; i++) {
-        var queryText = response.articles[i].description;
+        console.log(allData);
+        console.log(scores);
 
-        var sentimood = new Sentimood();
-        var analysis = sentimood.analyze(queryText);
-        var thisScore = analysis.score;
-
-        // CREATE NEW OBJECT
-        var articleObj = {
-          score: thisScore,
-          title: response.articles[i].title,
-          description: response.articles[i].description,
-          url: response.articles[i].url,
-          image: response.articles[i].urlToImage
-        };
-
-        qatarData.push(articleObj);
-      }
     });
 
-    // console.log("Qatar Array", qatarData);
-  }
 
-  function ukNews() {
-    var searchString = $("#topicInput")
-      .val()
-      .trim();
 
-    var queryURL =
-      "https://newsapi.org/v2/everything?q=" +
-      searchString +
-      "&language=en&sortBy=relevancy&pageSize=100&sources=bbc-news&apiKey=2877da71f97e4fa28fd788acd1887709";
+    // ------------------------UNDERLYING FUNCTIONS------------------------
 
-    $.ajax({
-      url: queryURL,
-      METHOD: "GET",
-      language: "en"
-    }).then(function(response) {
-      for (var i = 0; i < response.articles.length; i++) {
-        var queryText = response.articles[i].description;
 
-        var sentimood = new Sentimood();
-        var analysis = sentimood.analyze(queryText);
-        var thisScore = analysis.score;
+    //  THESE ARE THE FUNCTIONS TO GET NEWS FOR EACH COUNTRY RUN THE SENTIMENT ANALYSIS AND THEN RETURN AN ARRAY OF OBJECTS FOR EACH CONTRY //
 
-        // CREATE NEW OBJECT
-        var articleObj = {
-          score: thisScore,
-          title: response.articles[i].title,
-          description: response.articles[i].description,
-          url: response.articles[i].url,
-          image: response.articles[i].urlToImage
-        };
+    function qatarNews() {
 
-        ukData.push(articleObj);
-      }
-    });
+        allData.qatar = [];
+        scores.qatar = [];
 
-    // console.log("UK Array", ukData);
-  }
+        var searchString = $("#topicInput").val().trim();
 
-  function canadaNews() {
-    var searchString = $("#topicInput")
-      .val()
-      .trim();
+        var queryURL = "https://newsapi.org/v2/everything?q=" + searchString + "&language=en&sortBy=relevancy&pageSize=100&sources=al-jazeera-english&apiKey=2877da71f97e4fa28fd788acd1887709";
 
-    var queryURL =
-      "https://newsapi.org/v2/everything?q=" +
-      searchString +
-      "&language=en&sortBy=relevancy&pageSize=100&sources=the-globe-and-mail&apiKey=2877da71f97e4fa28fd788acd1887709";
 
-    $.ajax({
-      url: queryURL,
-      METHOD: "GET",
-      language: "en"
-    }).then(function(response) {
-      for (var i = 0; i < response.articles.length; i++) {
-        var queryText = response.articles[i].description;
+        $.ajax({
+            url: queryURL,
+            METHOD: "GET",
+            language: 'en',
+        }).then(function (response) {
 
-        var sentimood = new Sentimood();
-        var analysis = sentimood.analyze(queryText);
-        var thisScore = analysis.score;
+            for (var i = 0; i < response.articles.length; i++) {
 
-        // CREATE NEW OBJECT
-        var articleObj = {
-          score: thisScore,
-          title: response.articles[i].title,
-          description: response.articles[i].description,
-          url: response.articles[i].url,
-          image: response.articles[i].urlToImage
-        };
+                var queryText = response.articles[i].description;
 
-        canadaData.push(articleObj);
-      }
-    });
+                var sentimood = new Sentimood();
+                var analysis = sentimood.analyze(queryText);
+                var thisScore = analysis.score;
 
-    // console.log("Canada Array", canadaData);
-  }
 
-  function australiaNews() {
-    var searchString = $("#topicInput")
-      .val()
-      .trim();
+                // CREATE NEW OBJECT
+                var articleObj = {
+                    score: thisScore,
+                    title: response.articles[i].title,
+                    description: response.articles[i].description,
+                    url: response.articles[i].url,
+                    image: response.articles[i].urlToImage
+                }
 
-    var queryURL =
-      "https://newsapi.org/v2/everything?q=" +
-      searchString +
-      "&language=en&sortBy=relevancy&pageSize=100&sources=abc-news-au&apiKey=2877da71f97e4fa28fd788acd1887709";
+                allData.qatar.push(articleObj);
 
-    $.ajax({
-      url: queryURL,
-      METHOD: "GET",
-      language: "en"
-    }).then(function(response) {
-      for (var i = 0; i < response.articles.length; i++) {
-        var queryText = response.articles[i].description;
+                // Average / total sentiment calc 
 
-        var sentimood = new Sentimood();
-        var analysis = sentimood.analyze(queryText);
-        var thisScore = analysis.score;
+                var total = 0;
+                for (var j = 0; j < allData.qatar.length; j++) {
+                    total +=allData.qatar[j].score;
+                }
+                var average = total / allData.qatar.length;
+                
+                var scoreObj = {
+                    total: total,
+                    average: average
+                }
+                scores.qatar.push(scoreObj);
 
-        // CREATE NEW OBJECT
-        var articleObj = {
-          score: thisScore,
-          title: response.articles[i].title,
-          description: response.articles[i].description,
-          url: response.articles[i].url,
-          image: response.articles[i].urlToImage
-        };
+            }
 
-        australiaData.push(articleObj);
-      }
-    });
+        });
 
-    // console.log("Australia Array", australiaData);
-  }
+    };
 
-  function irelandNews() {
-    var searchString = $("#topicInput")
-      .val()
-      .trim();
+    function ukNews() {
 
-    var queryURL =
-      "https://newsapi.org/v2/everything?q=" +
-      searchString +
-      "&language=en&sortBy=relevancy&pageSize=100&sources=the-irish-times&apiKey=2877da71f97e4fa28fd788acd1887709";
+        allData.uk = [];
+        scores.uk = [];
 
-    $.ajax({
-      url: queryURL,
-      METHOD: "GET",
-      language: "en"
-    }).then(function(response) {
-      for (var i = 0; i < response.articles.length; i++) {
-        var queryText = response.articles[i].description;
+        var searchString = $("#topicInput").val().trim();
 
-        var sentimood = new Sentimood();
-        var analysis = sentimood.analyze(queryText);
-        var thisScore = analysis.score;
+        var queryURL = "https://newsapi.org/v2/everything?q=" + searchString + "&language=en&sortBy=relevancy&pageSize=100&sources=bbc-news&apiKey=2877da71f97e4fa28fd788acd1887709";
 
-        // CREATE NEW OBJECT
-        var articleObj = {
-          score: thisScore,
-          title: response.articles[i].title,
-          description: response.articles[i].description,
-          url: response.articles[i].url,
-          image: response.articles[i].urlToImage
-        };
 
-        irelandData.push(articleObj);
-      }
-    });
+        $.ajax({
+            url: queryURL,
+            METHOD: "GET",
+            language: 'en',
+        }).then(function (response) {
 
-    // console.log("Ireland Array", irelandData);
-  }
+            for (var i = 0; i < response.articles.length; i++) {
 
-  function isrealNews() {
-    var searchString = $("#topicInput")
-      .val()
-      .trim();
+                var queryText = response.articles[i].description;
 
-    var queryURL =
-      "https://newsapi.org/v2/everything?q=" +
-      searchString +
-      "&language=en&sortBy=relevancy&pageSize=100&sources=the-jerusalem-post&apiKey=2877da71f97e4fa28fd788acd1887709";
+                var sentimood = new Sentimood();
+                var analysis = sentimood.analyze(queryText);
+                var thisScore = analysis.score;
 
-    $.ajax({
-      url: queryURL,
-      METHOD: "GET",
-      language: "en"
-    }).then(function(response) {
-      for (var i = 0; i < response.articles.length; i++) {
-        var queryText = response.articles[i].description;
 
-        var sentimood = new Sentimood();
-        var analysis = sentimood.analyze(queryText);
-        var thisScore = analysis.score;
+                // CREATE NEW OBJECT
+                var articleObj = {
+                    score: thisScore,
+                    title: response.articles[i].title,
+                    description: response.articles[i].description,
+                    url: response.articles[i].url,
+                    image: response.articles[i].urlToImage
+                }
 
-        // CREATE NEW OBJECT
-        var articleObj = {
-          score: thisScore,
-          title: response.articles[i].title,
-          description: response.articles[i].description,
-          url: response.articles[i].url,
-          image: response.articles[i].urlToImage
-        };
+                allData.uk.push(articleObj);
 
-        isrealData.push(articleObj);
-      }
-    });
+                 // Average / total sentiment calc 
 
-    // console.log("Isreal Array", isrealData);
-  }
+                 var total = 0;
+                 for (var j = 0; j < allData.uk.length; j++) {
+                     total +=allData.uk[j].score;
+                 }
+                 var average = total / allData.uk.length;
+                 
+                 var scoreObj = {
+                     total: total,
+                     average: average
+                 }
+                 scores.uk.push(scoreObj);
+ 
 
-  function usaNews() {
-    var searchString = $("#topicInput")
-      .val()
-      .trim();
+            }
+        });
 
-    var queryURL =
-      "https://newsapi.org/v2/everything?q=" +
-      searchString +
-      "&language=en&sortBy=relevancy&pageSize=100&sources=the-new-york-times&apiKey=2877da71f97e4fa28fd788acd1887709";
+    };
 
-    $.ajax({
-      url: queryURL,
-      METHOD: "GET",
-      language: "en"
-    }).then(function(response) {
-      for (var i = 0; i < response.articles.length; i++) {
-        var queryText = response.articles[i].description;
+    function canadaNews() {
 
-        var sentimood = new Sentimood();
-        var analysis = sentimood.analyze(queryText);
-        var thisScore = analysis.score;
+        allData.canada = [];
+        scores.canada = [];
 
-        // CREATE NEW OBJECT
-        var articleObj = {
-          score: thisScore,
-          title: response.articles[i].title,
-          description: response.articles[i].description,
-          url: response.articles[i].url,
-          image: response.articles[i].urlToImage
-        };
+        var searchString = $("#topicInput").val().trim();
 
-        usaData.push(articleObj);
-      }
-    });
+        var queryURL = "https://newsapi.org/v2/everything?q=" + searchString + "&language=en&sortBy=relevancy&pageSize=100&sources=the-globe-and-mail&apiKey=2877da71f97e4fa28fd788acd1887709";
 
-    // console.log("USA Array", usaData);
-  }
 
-  function indiaNews() {
-    var searchString = $("#topicInput")
-      .val()
-      .trim();
+        $.ajax({
+            url: queryURL,
+            METHOD: "GET",
+            language: 'en',
+        }).then(function (response) {
 
-    var queryURL =
-      "https://newsapi.org/v2/everything?q=" +
-      searchString +
-      "&language=en&sortBy=relevancy&pageSize=100&sources=the-times-of-india&apiKey=2877da71f97e4fa28fd788acd1887709";
+            for (var i = 0; i < response.articles.length; i++) {
 
-    $.ajax({
-      url: queryURL,
-      METHOD: "GET",
-      language: "en"
-    }).then(function(response) {
-      for (var i = 0; i < response.articles.length; i++) {
-        var queryText = response.articles[i].description;
+                var queryText = response.articles[i].description;
 
-        var sentimood = new Sentimood();
-        var analysis = sentimood.analyze(queryText);
-        var thisScore = analysis.score;
+                var sentimood = new Sentimood();
+                var analysis = sentimood.analyze(queryText);
+                var thisScore = analysis.score;
 
-        // CREATE NEW OBJECT
-        var articleObj = {
-          score: thisScore,
-          title: response.articles[i].title,
-          description: response.articles[i].description,
-          url: response.articles[i].url,
-          image: response.articles[i].urlToImage
-        };
 
-        indiaData.push(articleObj);
-      }
-    });
+                // CREATE NEW OBJECT
+                var articleObj = {
+                    score: thisScore,
+                    title: response.articles[i].title,
+                    description: response.articles[i].description,
+                    url: response.articles[i].url,
+                    image: response.articles[i].urlToImage
+                }
 
-    // console.log("India Array", indiaData);
-  }
+                allData.canada.push(articleObj);
 
-  function russiaNews() {
-    var searchString = $("#topicInput")
-      .val()
-      .trim();
+                // Average / total sentiment calc 
 
-    var queryURL =
-      "https://newsapi.org/v2/everything?q=" +
-      searchString +
-      "&language=en&sortBy=relevancy&pageSize=100&sources=rt&apiKey=2877da71f97e4fa28fd788acd1887709";
+                var total = 0;
+                for (var j = 0; j < allData.canada.length; j++) {
+                    total +=allData.canada[j].score;
+                }
+                var average = total / allData.canada.length;
+                
+                var scoreObj = {
+                    total: total,
+                    average: average
+                }
+                scores.canada.push(scoreObj);
 
-    $.ajax({
-      url: queryURL,
-      METHOD: "GET",
-      language: "en"
-    }).then(function(response) {
-      for (var i = 0; i < response.articles.length; i++) {
-        var queryText = response.articles[i].description;
+            }
+        });
 
-        var sentimood = new Sentimood();
-        var analysis = sentimood.analyze(queryText);
-        var thisScore = analysis.score;
+    };
 
-        // CREATE NEW OBJECT
-        var articleObj = {
-          score: thisScore,
-          title: response.articles[i].title,
-          description: response.articles[i].description,
-          url: response.articles[i].url,
-          image: response.articles[i].urlToImage
-        };
+    function australiaNews() {
 
-        russiaData.push(articleObj);
-      }
-    });
+        allData.australia = [];
+        scores.australia = [];
 
-    // console.log("Russia Array", russiaData);
-  }
+        var searchString = $("#topicInput").val().trim();
 
-  // ------------------------------------------------
+        var queryURL = "https://newsapi.org/v2/everything?q=" + searchString + "&language=en&sortBy=relevancy&pageSize=100&sources=abc-news-au&apiKey=2877da71f97e4fa28fd788acd1887709";
+
+
+        $.ajax({
+            url: queryURL,
+            METHOD: "GET",
+            language: 'en',
+        }).then(function (response) {
+
+            for (var i = 0; i < response.articles.length; i++) {
+
+                var queryText = response.articles[i].description;
+
+                var sentimood = new Sentimood();
+                var analysis = sentimood.analyze(queryText);
+                var thisScore = analysis.score;
+
+
+                // CREATE NEW OBJECT
+                var articleObj = {
+                    score: thisScore,
+                    title: response.articles[i].title,
+                    description: response.articles[i].description,
+                    url: response.articles[i].url,
+                    image: response.articles[i].urlToImage
+                }
+
+                allData.australia.push(articleObj);
+
+                // Average / total sentiment calc 
+
+                var total = 0;
+                for (var j = 0; j < allData.australia.length; j++) {
+                    total +=allData.australia[j].score;
+                }
+                var average = total / allData.australia.length;
+                
+                var scoreObj = {
+                    total: total,
+                    average: average
+                }
+                scores.australia.push(scoreObj);
+
+            }
+        });
+
+        // console.log("Australia Array", australiaData);
+
+    };
+
+    function irelandNews() {
+
+        allData.ireland = [];
+        scores.ireland = [];
+
+        var searchString = $("#topicInput").val().trim();
+
+        var queryURL = "https://newsapi.org/v2/everything?q=" + searchString + "&language=en&sortBy=relevancy&pageSize=100&sources=the-irish-times&apiKey=2877da71f97e4fa28fd788acd1887709";
+
+
+        $.ajax({
+            url: queryURL,
+            METHOD: "GET",
+            language: 'en',
+        }).then(function (response) {
+
+            for (var i = 0; i < response.articles.length; i++) {
+
+                var queryText = response.articles[i].description;
+
+                var sentimood = new Sentimood();
+                var analysis = sentimood.analyze(queryText);
+                var thisScore = analysis.score;
+
+
+                // CREATE NEW OBJECT
+                var articleObj = {
+                    score: thisScore,
+                    title: response.articles[i].title,
+                    description: response.articles[i].description,
+                    url: response.articles[i].url,
+                    image: response.articles[i].urlToImage
+                }
+
+                allData.ireland.push(articleObj);
+
+                // Average / total sentiment calc 
+
+                var total = 0;
+                for (var j = 0; j < allData.ireland.length; j++) {
+                    total +=allData.ireland[j].score;
+                }
+                var average = total / allData.ireland.length;
+                
+                var scoreObj = {
+                    total: total,
+                    average: average
+                }
+                scores.ireland.push(scoreObj);
+
+            }
+        });
+
+    };
+
+    function isrealNews() {
+
+        allData.isreal = [];
+        scores.isreal = [];
+
+        var searchString = $("#topicInput").val().trim();
+
+        var queryURL = "https://newsapi.org/v2/everything?q=" + searchString + "&language=en&sortBy=relevancy&pageSize=100&sources=the-jerusalem-post&apiKey=2877da71f97e4fa28fd788acd1887709";
+
+
+        $.ajax({
+            url: queryURL,
+            METHOD: "GET",
+            language: 'en',
+        }).then(function (response) {
+
+            for (var i = 0; i < response.articles.length; i++) {
+
+                var queryText = response.articles[i].description;
+
+                var sentimood = new Sentimood();
+                var analysis = sentimood.analyze(queryText);
+                var thisScore = analysis.score;
+
+
+                // CREATE NEW OBJECT
+                var articleObj = {
+                    score: thisScore,
+                    title: response.articles[i].title,
+                    description: response.articles[i].description,
+                    url: response.articles[i].url,
+                    image: response.articles[i].urlToImage
+                }
+
+                allData.isreal.push(articleObj);
+
+                // Average / total sentiment calc 
+
+                var total = 0;
+                for (var j = 0; j < allData.isreal.length; j++) {
+                    total +=allData.isreal[j].score;
+                }
+                var average = total / allData.isreal.length;
+                
+                var scoreObj = {
+                    total: total,
+                    average: average
+                }
+                scores.isreal.push(scoreObj);
+
+            }
+        });
+
+    };
+
+    function usaNews() {
+
+        allData.usa = [];
+        scores.usa = [];
+
+        var searchString = $("#topicInput").val().trim();
+
+        var queryURL = "https://newsapi.org/v2/everything?q=" + searchString + "&language=en&sortBy=relevancy&pageSize=100&sources=the-new-york-times&apiKey=2877da71f97e4fa28fd788acd1887709";
+
+
+        $.ajax({
+            url: queryURL,
+            METHOD: "GET",
+            language: 'en',
+        }).then(function (response) {
+
+            for (var i = 0; i < response.articles.length; i++) {
+
+                var queryText = response.articles[i].description;
+
+                var sentimood = new Sentimood();
+                var analysis = sentimood.analyze(queryText);
+                var thisScore = analysis.score;
+
+
+                // CREATE NEW OBJECT
+                var articleObj = {
+                    score: thisScore,
+                    title: response.articles[i].title,
+                    description: response.articles[i].description,
+                    url: response.articles[i].url,
+                    image: response.articles[i].urlToImage
+                }
+
+                allData.usa.push(articleObj);
+
+                // Average / total sentiment calc 
+
+                var total = 0;
+                for (var j = 0; j < allData.usa.length; j++) {
+                    total +=allData.usa[j].score;
+                }
+                var average = total / allData.usa.length;
+                
+                var scoreObj = {
+                    total: total,
+                    average: average
+                }
+                scores.usa.push(scoreObj);
+
+            }
+        });
+
+    };
+
+    function indiaNews() {
+
+        allData.india = [];
+        scores.india = [];
+
+        var searchString = $("#topicInput").val().trim();
+
+        var queryURL = "https://newsapi.org/v2/everything?q=" + searchString + "&language=en&sortBy=relevancy&pageSize=100&sources=the-times-of-india&apiKey=2877da71f97e4fa28fd788acd1887709";
+
+        $.ajax({
+            url: queryURL,
+            METHOD: "GET",
+            language: 'en',
+        }).then(function (response) {
+
+            for (var i = 0; i < response.articles.length; i++) {
+
+                var queryText = response.articles[i].description;
+
+                var sentimood = new Sentimood();
+                var analysis = sentimood.analyze(queryText);
+                var thisScore = analysis.score;
+
+
+                // CREATE NEW OBJECT
+                var articleObj = {
+                    score: thisScore,
+                    title: response.articles[i].title,
+                    description: response.articles[i].description,
+                    url: response.articles[i].url,
+                    image: response.articles[i].urlToImage
+                }
+
+                allData.india.push(articleObj);
+
+                // Average / total sentiment calc 
+
+                var total = 0;
+                for (var j = 0; j < allData.india.length; j++) {
+                    total +=allData.india[j].score;
+                }
+                var average = total / allData.india.length;
+                
+                var scoreObj = {
+                    total: total,
+                    average: average
+                }
+                scores.india.push(scoreObj);
+
+            }
+        });
+
+    };
+
+    function russiaNews() {
+
+        allData.russia = [];
+        scores.russia = [];
+
+        var searchString = $("#topicInput").val().trim();
+
+        var queryURL = "https://newsapi.org/v2/everything?q=" + searchString + "&language=en&sortBy=relevancy&pageSize=100&sources=rt&apiKey=2877da71f97e4fa28fd788acd1887709";
+
+
+        $.ajax({
+            url: queryURL,
+            METHOD: "GET",
+            language: 'en',
+        }).then(function (response) {
+
+            for (var i = 0; i < response.articles.length; i++) {
+
+                var queryText = response.articles[i].description;
+
+                var sentimood = new Sentimood();
+                var analysis = sentimood.analyze(queryText);
+                var thisScore = analysis.score;
+
+
+                // CREATE NEW OBJECT
+                var articleObj = {
+                    score: thisScore,
+                    title: response.articles[i].title,
+                    description: response.articles[i].description,
+                    url: response.articles[i].url,
+                    image: response.articles[i].urlToImage
+                }
+
+                allData.russia.push(articleObj);
+
+                // Average / total sentiment calc 
+
+                var total = 0;
+                for (var j = 0; j < allData.russia.length; j++) {
+                    total +=allData.russia[j].score;
+                }
+                var average = total / allData.russia.length;
+                
+                var scoreObj = {
+                    total: total,
+                    average: average
+                }
+                scores.russia.push(scoreObj);
+
+            }
+        });
+
+    };
+
+    // ------------------------------------------------
 });
