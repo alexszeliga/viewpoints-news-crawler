@@ -3,17 +3,32 @@
 $(document).ready(function () {
     // ------------------------VARIABLES------------------------
 
-    var qatarData = [];
-    var ukData = [];
-    var canadaData = [];
-    var australiaData = [];
-    var irelandData = [];
-    var isrealData = [];
-    var usaData = [];
-    var indiaData = [];
-    var russiaData = [];
 
-    allData = [qatarData, ukData, canadaData, australiaData, irelandData, isrealData, usaData, indiaData, russiaData];
+    window.allData = {
+        "qatar": [],
+        "uk": [],
+        "canada": [],
+        "australia": [],
+        "ireland": [],
+        "isreal": [],
+        "usa": [],
+        "india": [],
+        "russia": []
+    }
+
+    window.scores = {
+        "qatar": [],
+        "uk": [],
+        "canada": [],
+        "australia": [],
+        "ireland": [],
+        "isreal": [],
+        "usa": [],
+        "india": [],
+        "russia": []
+    }
+
+    
 
     // ------------------------ON CLICK EVENT HANDLE------------------------
 
@@ -32,6 +47,8 @@ $(document).ready(function () {
         indiaNews();
         russiaNews();
 
+        console.log(scores)
+
     });
 
 
@@ -42,6 +59,9 @@ $(document).ready(function () {
     //  THESE ARE THE FUNCTIONS TO GET NEWS FOR EACH COUNTRY RUN THE SENTIMENT ANALYSIS AND THEN RETURN AN ARRAY OF OBJECTS FOR EACH CONTRY //
 
     function qatarNews() {
+
+        allData.qatar = [];
+        scores.qatar = [];
 
         var searchString = $("#topicInput").val().trim();
 
@@ -72,16 +92,32 @@ $(document).ready(function () {
                     image: response.articles[i].urlToImage
                 }
 
-                qatarData.push(articleObj);
+                allData.qatar.push(articleObj);
+
+                // Average / total sentiment calc 
+
+                var total = 0;
+                for (var j = 0; j < allData.qatar.length; j++) {
+                    total +=allData.qatar[j].score;
+                }
+                var average = total / allData.qatar.length;
+                
+                var scoreObj = {
+                    total: total,
+                    average: average
+                }
+                scores.qatar.push(scoreObj);
 
             }
-        });
 
-        // console.log("Qatar Array", qatarData);
+        });
 
     };
 
     function ukNews() {
+
+        allData.uk = [];
+        scores.uk = [];
 
         var searchString = $("#topicInput").val().trim();
 
@@ -112,16 +148,32 @@ $(document).ready(function () {
                     image: response.articles[i].urlToImage
                 }
 
-                ukData.push(articleObj);
+                allData.uk.push(articleObj);
+
+                 // Average / total sentiment calc 
+
+                 var total = 0;
+                 for (var j = 0; j < allData.uk.length; j++) {
+                     total +=allData.uk[j].score;
+                 }
+                 var average = total / allData.uk.length;
+                 
+                 var scoreObj = {
+                     total: total,
+                     average: average
+                 }
+                 scores.uk.push(scoreObj);
+ 
 
             }
         });
 
-        // console.log("UK Array", ukData);
-
     };
 
     function canadaNews() {
+
+        allData.canada = [];
+        scores.canada = [];
 
         var searchString = $("#topicInput").val().trim();
 
@@ -152,16 +204,31 @@ $(document).ready(function () {
                     image: response.articles[i].urlToImage
                 }
 
-                canadaData.push(articleObj);
+                allData.canada.push(articleObj);
+
+                // Average / total sentiment calc 
+
+                var total = 0;
+                for (var j = 0; j < allData.canada.length; j++) {
+                    total +=allData.canada[j].score;
+                }
+                var average = total / allData.canada.length;
+                
+                var scoreObj = {
+                    total: total,
+                    average: average
+                }
+                scores.canada.push(scoreObj);
 
             }
         });
 
-        // console.log("Canada Array", canadaData);
-
     };
 
     function australiaNews() {
+
+        allData.australia = [];
+        scores.australia = [];
 
         var searchString = $("#topicInput").val().trim();
 
@@ -192,7 +259,21 @@ $(document).ready(function () {
                     image: response.articles[i].urlToImage
                 }
 
-                australiaData.push(articleObj);
+                allData.australia.push(articleObj);
+
+                // Average / total sentiment calc 
+
+                var total = 0;
+                for (var j = 0; j < allData.australia.length; j++) {
+                    total +=allData.australia[j].score;
+                }
+                var average = total / allData.australia.length;
+                
+                var scoreObj = {
+                    total: total,
+                    average: average
+                }
+                scores.australia.push(scoreObj);
 
             }
         });
@@ -202,6 +283,9 @@ $(document).ready(function () {
     };
 
     function irelandNews() {
+
+        allData.ireland = [];
+        scores.ireland = [];
 
         var searchString = $("#topicInput").val().trim();
 
@@ -232,16 +316,31 @@ $(document).ready(function () {
                     image: response.articles[i].urlToImage
                 }
 
-                irelandData.push(articleObj);
+                allData.ireland.push(articleObj);
+
+                // Average / total sentiment calc 
+
+                var total = 0;
+                for (var j = 0; j < allData.ireland.length; j++) {
+                    total +=allData.ireland[j].score;
+                }
+                var average = total / allData.ireland.length;
+                
+                var scoreObj = {
+                    total: total,
+                    average: average
+                }
+                scores.ireland.push(scoreObj);
 
             }
         });
 
-        // console.log("Ireland Array", irelandData);
-
     };
 
     function isrealNews() {
+
+        allData.isreal = [];
+        scores.isreal = [];
 
         var searchString = $("#topicInput").val().trim();
 
@@ -272,17 +371,31 @@ $(document).ready(function () {
                     image: response.articles[i].urlToImage
                 }
 
-                isrealData.push(articleObj);
+                allData.isreal.push(articleObj);
+
+                // Average / total sentiment calc 
+
+                var total = 0;
+                for (var j = 0; j < allData.isreal.length; j++) {
+                    total +=allData.isreal[j].score;
+                }
+                var average = total / allData.isreal.length;
+                
+                var scoreObj = {
+                    total: total,
+                    average: average
+                }
+                scores.isreal.push(scoreObj);
 
             }
         });
 
-        // console.log("Isreal Array", isrealData);
-
     };
 
-
     function usaNews() {
+
+        allData.usa = [];
+        scores.usa = [];
 
         var searchString = $("#topicInput").val().trim();
 
@@ -313,22 +426,35 @@ $(document).ready(function () {
                     image: response.articles[i].urlToImage
                 }
 
-                usaData.push(articleObj);
+                allData.usa.push(articleObj);
+
+                // Average / total sentiment calc 
+
+                var total = 0;
+                for (var j = 0; j < allData.usa.length; j++) {
+                    total +=allData.usa[j].score;
+                }
+                var average = total / allData.usa.length;
+                
+                var scoreObj = {
+                    total: total,
+                    average: average
+                }
+                scores.usa.push(scoreObj);
 
             }
         });
 
-        // console.log("USA Array", usaData);
-
     };
 
-
     function indiaNews() {
+
+        allData.india = [];
+        scores.india = [];
 
         var searchString = $("#topicInput").val().trim();
 
         var queryURL = "https://newsapi.org/v2/everything?q=" + searchString + "&language=en&sortBy=relevancy&pageSize=100&sources=the-times-of-india&apiKey=2877da71f97e4fa28fd788acd1887709";
-
 
         $.ajax({
             url: queryURL,
@@ -354,17 +480,31 @@ $(document).ready(function () {
                     image: response.articles[i].urlToImage
                 }
 
-                indiaData.push(articleObj);
+                allData.india.push(articleObj);
+
+                // Average / total sentiment calc 
+
+                var total = 0;
+                for (var j = 0; j < allData.india.length; j++) {
+                    total +=allData.india[j].score;
+                }
+                var average = total / allData.india.length;
+                
+                var scoreObj = {
+                    total: total,
+                    average: average
+                }
+                scores.india.push(scoreObj);
 
             }
         });
 
-        // console.log("India Array", indiaData);
-
     };
 
-
     function russiaNews() {
+
+        allData.russia = [];
+        scores.russia = [];
 
         var searchString = $("#topicInput").val().trim();
 
@@ -395,15 +535,26 @@ $(document).ready(function () {
                     image: response.articles[i].urlToImage
                 }
 
-                russiaData.push(articleObj);
+                allData.russia.push(articleObj);
+
+                // Average / total sentiment calc 
+
+                var total = 0;
+                for (var j = 0; j < allData.russia.length; j++) {
+                    total +=allData.russia[j].score;
+                }
+                var average = total / allData.russia.length;
+                
+                var scoreObj = {
+                    total: total,
+                    average: average
+                }
+                scores.russia.push(scoreObj);
 
             }
         });
 
-        // console.log("Russia Array", russiaData);
-
     };
-
 
     // ------------------------------------------------
 });

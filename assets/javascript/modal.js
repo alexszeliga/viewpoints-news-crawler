@@ -1,6 +1,6 @@
 // creating the modal to display news story info
 
-window.allData = [];
+// window.allData = [];
 
 $("#submitButton").on("click", function(event) {
   event.preventDefault();
