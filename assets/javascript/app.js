@@ -1,40 +1,77 @@
-var articleDataModel = {
-  picUrl: "#",
-  articleUrl: "#",
-  articleTitle: "#",
-  articleSummary:
-    "...passersby were amazed by the unusually large amounts of blood.",
-  articleSentimentScore: -2,
-  articleSource: "The Onion",
-  sourceLogoUrl: "#"
-};
-
 google.charts.load("current", {
   packages: ["geochart"],
   mapsApiKey: "AIzaSyBqNFzgS2GUY_xDEFsYOu44N_XQCfBNYPs"
 });
 
 google.charts.setOnLoadCallback(drawRegionsMap);
+var qatSentimentScore = 0;
+var ukSentimentScore = 0;
+var canSentimentScore = 0;
+var ausSentimentScore = 0;
+var ireSentimentScore = 0;
+var isrSentimentScore = 0;
+var usaSentimentScore = 0;
+var indSentimentScore = 0;
+var rusSentimentScore = 0;
+
+var qatFlag = false;
+var ukFlag = false;
+var canFlag = false;
+var ausFlag = false;
+var ireFlag = false;
+var isrFlag = false;
+var usaFlag = false;
+var indFlag = false;
+var rusFlag = false;
+
+var mapMin = 0;
+var mapMax = 1;
+
+function drawMapAfterAPIIngest() {
+  if (
+    qatFlag &&
+    ukFlag &&
+    canFlag &&
+    ausFlag &&
+    ireFlag &&
+    isrFlag &&
+    usaFlag &&
+    indFlag &&
+    rusFlag
+  ) {
+    qatFlag = false;
+    ukFlag = false;
+    canFlag = false;
+    ausFlag = false;
+    ireFlag = false;
+    isrFlag = false;
+    usaFlag = false;
+    indFlag = false;
+    rusFlag = false;
+
+    drawRegionsMap();
+  }
+}
 
 function drawRegionsMap() {
   var data = google.visualization.arrayToDataTable([
     ["Country", "Sentiment Score"],
-    ["Qatar", 0.1],
-    ["United Kingdom", 0.2],
-    ["Canada", 0.3],
-    ["Australia", 0.4],
-    ["Ireland", 0.5],
-    ["Israel", 0.6],
-    ["United States", 0.7],
-    ["India", 0.8],
-    ["Russia", 0.9]
+    ["Qatar", qatSentimentScore],
+    ["United Kingdom", ukSentimentScore],
+    ["Canada", canSentimentScore],
+    ["Australia", ausSentimentScore],
+    ["Ireland", ireSentimentScore],
+    ["Israel", isrSentimentScore],
+    ["United States", usaSentimentScore],
+    ["India", indSentimentScore],
+    ["Russia", indSentimentScore]
   ]);
 
   var options = {
     colorAxis: {
-      minValue: 0,
+      minValue: mapMin,
       colors: ["#00AEEF", "#F7F2DA", "#F26422"],
-      maxValue: 1
+      maxValue: mapMax
     },
     backgroundColor: { fill: "white", strokeWidth: 0 },
     datalessRegionColor: "#d3d3d3",
@@ -75,7 +112,7 @@ function drawRegionsMap() {
     $(".grid-container").append(modalBox);
     // console.log(modalBox);
     console.log(countryName);
-    //  console.log(scores);
+    console.log(scores);
     switch (countryName) {
       case "Russia":
         console.log(allData.russia);

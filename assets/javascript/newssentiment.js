@@ -87,19 +87,27 @@ $(document).ready(function() {
         allData.qatar.push(articleObj);
 
         // Average / total sentiment calc
-
-        var total = 0;
-        for (var j = 0; j < allData.qatar.length; j++) {
-          total += allData.qatar[j].score;
-        }
-        var average = total / allData.qatar.length;
-
-        var scoreObj = {
-          total: total,
-          average: average
-        };
-        scores.qatar.push(scoreObj);
       }
+      var total = 0;
+      for (var j = 0; j < allData.qatar.length; j++) {
+        total += allData.qatar[j].score;
+      }
+      var average = total / allData.qatar.length;
+
+      var scoreObj = {
+        total: total,
+        average: average
+      };
+      scores.qatar.push(scoreObj);
+      qatSentimentScore = scoreObj.average;
+      if (qatSentimentScore < mapMin) {
+        mapMin = qatSentimentScore;
+      }
+      if (qatSentimentScore > mapMax) {
+        mapMax = qatSentimentScore;
+      }
+      qatFlag = true;
+      drawMapAfterAPIIngest();
     });
   }
 
@@ -140,19 +148,26 @@ $(document).ready(function() {
         allData.uk.push(articleObj);
 
         // Average / total sentiment calc
-
-        var total = 0;
-        for (var j = 0; j < allData.uk.length; j++) {
-          total += allData.uk[j].score;
-        }
-        var average = total / allData.uk.length;
-
-        var scoreObj = {
-          total: total,
-          average: average
-        };
-        scores.uk.push(scoreObj);
       }
+      var total = 0;
+      for (var j = 0; j < allData.uk.length; j++) {
+        total += allData.uk[j].score;
+      }
+      var average = total / allData.uk.length;
+
+      var scoreObj = {
+        total: total,
+        average: average
+      };
+      scores.uk.push(scoreObj);
+      ukSentimentScore = scoreObj.average;
+      if (ukSentimentScore < mapMin) {
+        mapMin = ukSentimentScore;
+      }
+      if (ukSentimentScore > mapMax) {
+        mapMax = ukSentimentScore;
+      }
+      ukFlag = true;
     });
   }
 
@@ -193,19 +208,27 @@ $(document).ready(function() {
         allData.canada.push(articleObj);
 
         // Average / total sentiment calc
-
-        var total = 0;
-        for (var j = 0; j < allData.canada.length; j++) {
-          total += allData.canada[j].score;
-        }
-        var average = total / allData.canada.length;
-
-        var scoreObj = {
-          total: total,
-          average: average
-        };
-        scores.canada.push(scoreObj);
       }
+      var total = 0;
+      for (var j = 0; j < allData.canada.length; j++) {
+        total += allData.canada[j].score;
+      }
+      var average = total / allData.canada.length;
+
+      var scoreObj = {
+        total: total,
+        average: average
+      };
+      scores.canada.push(scoreObj);
+      canSentimentScore = scoreObj.average;
+      if (canSentimentScore < mapMin) {
+        mapMin = canSentimentScore;
+      }
+      if (canSentimentScore > mapMax) {
+        mapMax = canSentimentScore;
+      }
+      canFlag = true;
+      drawMapAfterAPIIngest();
     });
   }
 
@@ -246,19 +269,27 @@ $(document).ready(function() {
         allData.australia.push(articleObj);
 
         // Average / total sentiment calc
-
-        var total = 0;
-        for (var j = 0; j < allData.australia.length; j++) {
-          total += allData.australia[j].score;
-        }
-        var average = total / allData.australia.length;
-
-        var scoreObj = {
-          total: total,
-          average: average
-        };
-        scores.australia.push(scoreObj);
       }
+      var total = 0;
+      for (var j = 0; j < allData.australia.length; j++) {
+        total += allData.australia[j].score;
+      }
+      var average = total / allData.australia.length;
+
+      var scoreObj = {
+        total: total,
+        average: average
+      };
+      scores.australia.push(scoreObj);
+      ausSentimentScore = scoreObj.average;
+      if (ausSentimentScore < mapMin) {
+        mapMin = ausSentimentScore;
+      }
+      if (ausSentimentScore > mapMax) {
+        mapMax = ausSentimentScore;
+      }
+      ausFlag = true;
+      drawMapAfterAPIIngest();
     });
 
     // console.log("Australia Array", australiaData);
@@ -299,21 +330,29 @@ $(document).ready(function() {
         };
 
         allData.ireland.push(articleObj);
-
-        // Average / total sentiment calc
-
-        var total = 0;
-        for (var j = 0; j < allData.ireland.length; j++) {
-          total += allData.ireland[j].score;
-        }
-        var average = total / allData.ireland.length;
-
-        var scoreObj = {
-          total: total,
-          average: average
-        };
-        scores.ireland.push(scoreObj);
       }
+      // Average / total sentiment calc
+
+      var total = 0;
+      for (var j = 0; j < allData.ireland.length; j++) {
+        total += allData.ireland[j].score;
+      }
+      var average = total / allData.ireland.length;
+
+      var scoreObj = {
+        total: total,
+        average: average
+      };
+      scores.ireland.push(scoreObj);
+      ireSentimentScore = scoreObj.average;
+      if (ireSentimentScore < mapMin) {
+        mapMin = ireSentimentScore;
+      }
+      if (ireSentimentScore > mapMax) {
+        mapMax = ireSentimentScore;
+      }
+      ireFlag = true;
+      drawMapAfterAPIIngest();
     });
   }
 
@@ -352,21 +391,30 @@ $(document).ready(function() {
         };
 
         allData.isreal.push(articleObj);
-
-        // Average / total sentiment calc
-
-        var total = 0;
-        for (var j = 0; j < allData.isreal.length; j++) {
-          total += allData.isreal[j].score;
-        }
-        var average = total / allData.isreal.length;
-
-        var scoreObj = {
-          total: total,
-          average: average
-        };
-        scores.isreal.push(scoreObj);
       }
+      // Average / total sentiment calc
+
+      var total = 0;
+      for (var j = 0; j < allData.isreal.length; j++) {
+        total += allData.isreal[j].score;
+      }
+      var average = total / allData.isreal.length;
+
+      var scoreObj = {
+        total: total,
+        average: average
+      };
+      scores.isreal.push(scoreObj);
+      isrSentimentScore = scoreObj.average;
+      if (isrSentimentScore < mapMin) {
+        mapMin = isrSentimentScore;
+      }
+      if (isrSentimentScore > mapMax) {
+        mapMax = isrSentimentScore;
+      }
+      isrFlag = true;
+      console.log("isrSentimentScore: " + isrSentimentScore);
+      drawMapAfterAPIIngest();
     });
   }
 
@@ -405,21 +453,29 @@ $(document).ready(function() {
         };
 
         allData.usa.push(articleObj);
-
-        // Average / total sentiment calc
-
-        var total = 0;
-        for (var j = 0; j < allData.usa.length; j++) {
-          total += allData.usa[j].score;
-        }
-        var average = total / allData.usa.length;
-
-        var scoreObj = {
-          total: total,
-          average: average
-        };
-        scores.usa.push(scoreObj);
       }
+      // Average / total sentiment calc
+
+      var total = 0;
+      for (var j = 0; j < allData.usa.length; j++) {
+        total += allData.usa[j].score;
+      }
+      var average = total / allData.usa.length;
+
+      var scoreObj = {
+        total: total,
+        average: average
+      };
+      scores.usa.push(scoreObj);
+      usaSentimentScore = scoreObj.average;
+      if (usaSentimentScore < mapMin) {
+        mapMin = usaSentimentScore;
+      }
+      if (usaSentimentScore > mapMax) {
+        mapMax = usaSentimentScore;
+      }
+      usaFlag = true;
+      drawMapAfterAPIIngest();
     });
   }
 
@@ -458,21 +514,29 @@ $(document).ready(function() {
         };
 
         allData.india.push(articleObj);
-
-        // Average / total sentiment calc
-
-        var total = 0;
-        for (var j = 0; j < allData.india.length; j++) {
-          total += allData.india[j].score;
-        }
-        var average = total / allData.india.length;
-
-        var scoreObj = {
-          total: total,
-          average: average
-        };
-        scores.india.push(scoreObj);
       }
+      // Average / total sentiment calc
+
+      var total = 0;
+      for (var j = 0; j < allData.india.length; j++) {
+        total += allData.india[j].score;
+      }
+      var average = total / allData.india.length;
+
+      var scoreObj = {
+        total: total,
+        average: average
+      };
+      scores.india.push(scoreObj);
+      indSentimentScore = scoreObj.average;
+      if (indSentimentScore < mapMin) {
+        mapMin = indSentimentScore;
+      }
+      if (indSentimentScore > mapMax) {
+        mapMax = indSentimentScore;
+      }
+      indFlag = true;
+      drawMapAfterAPIIngest();
     });
   }
 
@@ -511,21 +575,29 @@ $(document).ready(function() {
         };
 
         allData.russia.push(articleObj);
-
-        // Average / total sentiment calc
-
-        var total = 0;
-        for (var j = 0; j < allData.russia.length; j++) {
-          total += allData.russia[j].score;
-        }
-        var average = total / allData.russia.length;
-
-        var scoreObj = {
-          total: total,
-          average: average
-        };
-        scores.russia.push(scoreObj);
       }
+      // Average / total sentiment calc
+
+      var total = 0;
+      for (var j = 0; j < allData.russia.length; j++) {
+        total += allData.russia[j].score;
+      }
+      var average = total / allData.russia.length;
+
+      var scoreObj = {
+        total: total,
+        average: average
+      };
+      scores.russia.push(scoreObj);
+      rusSentimentScore = scoreObj.average;
+      if (rusSentimentScore < mapMin) {
+        mapMin = rusSentimentScore;
+      }
+      if (rusSentimentScore > mapMax) {
+        mapMax = rusSentimentScore;
+      }
+      rusFlag = true;
+      drawMapAfterAPIIngest();
     });
   }
 
