@@ -1,5 +1,5 @@
 // Script to pull in news sources from NewsAPI by country and then run sentiment analysis and store data in allData.
-// 8eaf501197d5464595dd31d3651fd7da
+// 6d89e0cfe1464879bbc8c29d636efd66
 $(document).ready(function() {
   // ------------------------VARIABLES------------------------
 
@@ -61,7 +61,7 @@ $(document).ready(function() {
     var queryURL =
       "https://newsapi.org/v2/everything?q=" +
       searchString +
-      "&language=en&sortBy=relevancy&pageSize=100&sources=al-jazeera-english&apiKey=8eaf501197d5464595dd31d3651fd7da";
+      "&language=en&sortBy=relevancy&pageSize=10&sources=al-jazeera-english&apiKey=6d89e0cfe1464879bbc8c29d636efd66";
 
     $.ajax({
       url: queryURL,
@@ -87,19 +87,27 @@ $(document).ready(function() {
         allData.qatar.push(articleObj);
 
         // Average / total sentiment calc
-
-        var total = 0;
-        for (var j = 0; j < allData.qatar.length; j++) {
-          total += allData.qatar[j].score;
-        }
-        var average = total / allData.qatar.length;
-
-        var scoreObj = {
-          total: total,
-          average: average
-        };
-        scores.qatar.push(scoreObj);
       }
+      var total = 0;
+      for (var j = 0; j < allData.qatar.length; j++) {
+        total += allData.qatar[j].score;
+      }
+      var average = total / allData.qatar.length;
+
+      var scoreObj = {
+        total: total,
+        average: average
+      };
+      scores.qatar.push(scoreObj);
+      qatSentimentScore = scoreObj.average;
+      if (qatSentimentScore < mapMin) {
+        mapMin = qatSentimentScore;
+      }
+      if (qatSentimentScore > mapMax) {
+        mapMax = qatSentimentScore;
+      }
+      qatFlag = true;
+      drawMapAfterAPIIngest();
     });
   }
 
@@ -114,7 +122,7 @@ $(document).ready(function() {
     var queryURL =
       "https://newsapi.org/v2/everything?q=" +
       searchString +
-      "&language=en&sortBy=relevancy&pageSize=100&sources=cbc-news&apiKey=8eaf501197d5464595dd31d3651fd7da";
+      "&language=en&sortBy=relevancy&pageSize=10&sources=cbc-news&apiKey=6d89e0cfe1464879bbc8c29d636efd66";
 
     $.ajax({
       url: queryURL,
@@ -140,19 +148,26 @@ $(document).ready(function() {
         allData.uk.push(articleObj);
 
         // Average / total sentiment calc
-
-        var total = 0;
-        for (var j = 0; j < allData.uk.length; j++) {
-          total += allData.uk[j].score;
-        }
-        var average = total / allData.uk.length;
-
-        var scoreObj = {
-          total: total,
-          average: average
-        };
-        scores.uk.push(scoreObj);
       }
+      var total = 0;
+      for (var j = 0; j < allData.uk.length; j++) {
+        total += allData.uk[j].score;
+      }
+      var average = total / allData.uk.length;
+
+      var scoreObj = {
+        total: total,
+        average: average
+      };
+      scores.uk.push(scoreObj);
+      ukSentimentScore = scoreObj.average;
+      if (ukSentimentScore < mapMin) {
+        mapMin = ukSentimentScore;
+      }
+      if (ukSentimentScore > mapMax) {
+        mapMax = ukSentimentScore;
+      }
+      ukFlag = true;
     });
   }
 
@@ -167,7 +182,7 @@ $(document).ready(function() {
     var queryURL =
       "https://newsapi.org/v2/everything?q=" +
       searchString +
-      "&language=en&sortBy=relevancy&pageSize=100&sources=the-globe-and-mail&apiKey=8eaf501197d5464595dd31d3651fd7da";
+      "&language=en&sortBy=relevancy&pageSize=10&sources=the-globe-and-mail&apiKey=6d89e0cfe1464879bbc8c29d636efd66";
 
     $.ajax({
       url: queryURL,
@@ -193,19 +208,27 @@ $(document).ready(function() {
         allData.canada.push(articleObj);
 
         // Average / total sentiment calc
-
-        var total = 0;
-        for (var j = 0; j < allData.canada.length; j++) {
-          total += allData.canada[j].score;
-        }
-        var average = total / allData.canada.length;
-
-        var scoreObj = {
-          total: total,
-          average: average
-        };
-        scores.canada.push(scoreObj);
       }
+      var total = 0;
+      for (var j = 0; j < allData.canada.length; j++) {
+        total += allData.canada[j].score;
+      }
+      var average = total / allData.canada.length;
+
+      var scoreObj = {
+        total: total,
+        average: average
+      };
+      scores.canada.push(scoreObj);
+      canSentimentScore = scoreObj.average;
+      if (canSentimentScore < mapMin) {
+        mapMin = canSentimentScore;
+      }
+      if (canSentimentScore > mapMax) {
+        mapMax = canSentimentScore;
+      }
+      canFlag = true;
+      drawMapAfterAPIIngest();
     });
   }
 
@@ -220,7 +243,7 @@ $(document).ready(function() {
     var queryURL =
       "https://newsapi.org/v2/everything?q=" +
       searchString +
-      "&language=en&sortBy=relevancy&pageSize=100&sources=abc-news-au&apiKey=8eaf501197d5464595dd31d3651fd7da";
+      "&language=en&sortBy=relevancy&pageSize=10&sources=abc-news-au&apiKey=6d89e0cfe1464879bbc8c29d636efd66";
 
     $.ajax({
       url: queryURL,
@@ -246,19 +269,27 @@ $(document).ready(function() {
         allData.australia.push(articleObj);
 
         // Average / total sentiment calc
-
-        var total = 0;
-        for (var j = 0; j < allData.australia.length; j++) {
-          total += allData.australia[j].score;
-        }
-        var average = total / allData.australia.length;
-
-        var scoreObj = {
-          total: total,
-          average: average
-        };
-        scores.australia.push(scoreObj);
       }
+      var total = 0;
+      for (var j = 0; j < allData.australia.length; j++) {
+        total += allData.australia[j].score;
+      }
+      var average = total / allData.australia.length;
+
+      var scoreObj = {
+        total: total,
+        average: average
+      };
+      scores.australia.push(scoreObj);
+      ausSentimentScore = scoreObj.average;
+      if (ausSentimentScore < mapMin) {
+        mapMin = ausSentimentScore;
+      }
+      if (ausSentimentScore > mapMax) {
+        mapMax = ausSentimentScore;
+      }
+      ausFlag = true;
+      drawMapAfterAPIIngest();
     });
 
     // console.log("Australia Array", australiaData);
@@ -275,7 +306,7 @@ $(document).ready(function() {
     var queryURL =
       "https://newsapi.org/v2/everything?q=" +
       searchString +
-      "&language=en&sortBy=relevancy&pageSize=100&sources=the-irish-times&apiKey=8eaf501197d5464595dd31d3651fd7da";
+      "&language=en&sortBy=relevancy&pageSize=10&sources=the-irish-times&apiKey=6d89e0cfe1464879bbc8c29d636efd66";
 
     $.ajax({
       url: queryURL,
@@ -299,21 +330,29 @@ $(document).ready(function() {
         };
 
         allData.ireland.push(articleObj);
-
-        // Average / total sentiment calc
-
-        var total = 0;
-        for (var j = 0; j < allData.ireland.length; j++) {
-          total += allData.ireland[j].score;
-        }
-        var average = total / allData.ireland.length;
-
-        var scoreObj = {
-          total: total,
-          average: average
-        };
-        scores.ireland.push(scoreObj);
       }
+      // Average / total sentiment calc
+
+      var total = 0;
+      for (var j = 0; j < allData.ireland.length; j++) {
+        total += allData.ireland[j].score;
+      }
+      var average = total / allData.ireland.length;
+
+      var scoreObj = {
+        total: total,
+        average: average
+      };
+      scores.ireland.push(scoreObj);
+      ireSentimentScore = scoreObj.average;
+      if (ireSentimentScore < mapMin) {
+        mapMin = ireSentimentScore;
+      }
+      if (ireSentimentScore > mapMax) {
+        mapMax = ireSentimentScore;
+      }
+      ireFlag = true;
+      drawMapAfterAPIIngest();
     });
   }
 
@@ -328,7 +367,7 @@ $(document).ready(function() {
     var queryURL =
       "https://newsapi.org/v2/everything?q=" +
       searchString +
-      "&language=en&sortBy=relevancy&pageSize=100&sources=the-jerusalem-post&apiKey=8eaf501197d5464595dd31d3651fd7da";
+      "&language=en&sortBy=relevancy&pageSize=10&sources=the-jerusalem-post&apiKey=6d89e0cfe1464879bbc8c29d636efd66";
 
     $.ajax({
       url: queryURL,
@@ -352,21 +391,30 @@ $(document).ready(function() {
         };
 
         allData.isreal.push(articleObj);
-
-        // Average / total sentiment calc
-
-        var total = 0;
-        for (var j = 0; j < allData.isreal.length; j++) {
-          total += allData.isreal[j].score;
-        }
-        var average = total / allData.isreal.length;
-
-        var scoreObj = {
-          total: total,
-          average: average
-        };
-        scores.isreal.push(scoreObj);
       }
+      // Average / total sentiment calc
+
+      var total = 0;
+      for (var j = 0; j < allData.isreal.length; j++) {
+        total += allData.isreal[j].score;
+      }
+      var average = total / allData.isreal.length;
+
+      var scoreObj = {
+        total: total,
+        average: average
+      };
+      scores.isreal.push(scoreObj);
+      isrSentimentScore = scoreObj.average;
+      if (isrSentimentScore < mapMin) {
+        mapMin = isrSentimentScore;
+      }
+      if (isrSentimentScore > mapMax) {
+        mapMax = isrSentimentScore;
+      }
+      isrFlag = true;
+      console.log("isrSentimentScore: " + isrSentimentScore);
+      drawMapAfterAPIIngest();
     });
   }
 
@@ -381,7 +429,7 @@ $(document).ready(function() {
     var queryURL =
       "https://newsapi.org/v2/everything?q=" +
       searchString +
-      "&language=en&sortBy=relevancy&pageSize=100&sources=the-new-york-times&apiKey=8eaf501197d5464595dd31d3651fd7da";
+      "&language=en&sortBy=relevancy&pageSize=10&sources=the-new-york-times&apiKey=6d89e0cfe1464879bbc8c29d636efd66";
 
     $.ajax({
       url: queryURL,
@@ -405,21 +453,29 @@ $(document).ready(function() {
         };
 
         allData.usa.push(articleObj);
-
-        // Average / total sentiment calc
-
-        var total = 0;
-        for (var j = 0; j < allData.usa.length; j++) {
-          total += allData.usa[j].score;
-        }
-        var average = total / allData.usa.length;
-
-        var scoreObj = {
-          total: total,
-          average: average
-        };
-        scores.usa.push(scoreObj);
       }
+      // Average / total sentiment calc
+
+      var total = 0;
+      for (var j = 0; j < allData.usa.length; j++) {
+        total += allData.usa[j].score;
+      }
+      var average = total / allData.usa.length;
+
+      var scoreObj = {
+        total: total,
+        average: average
+      };
+      scores.usa.push(scoreObj);
+      usaSentimentScore = scoreObj.average;
+      if (usaSentimentScore < mapMin) {
+        mapMin = usaSentimentScore;
+      }
+      if (usaSentimentScore > mapMax) {
+        mapMax = usaSentimentScore;
+      }
+      usaFlag = true;
+      drawMapAfterAPIIngest();
     });
   }
 
@@ -434,7 +490,7 @@ $(document).ready(function() {
     var queryURL =
       "https://newsapi.org/v2/everything?q=" +
       searchString +
-      "&language=en&sortBy=relevancy&pageSize=100&sources=the-times-of-india&apiKey=8eaf501197d5464595dd31d3651fd7da";
+      "&language=en&sortBy=relevancy&pageSize=10&sources=the-times-of-india&apiKey=6d89e0cfe1464879bbc8c29d636efd66";
 
     $.ajax({
       url: queryURL,
@@ -458,21 +514,29 @@ $(document).ready(function() {
         };
 
         allData.india.push(articleObj);
-
-        // Average / total sentiment calc
-
-        var total = 0;
-        for (var j = 0; j < allData.india.length; j++) {
-          total += allData.india[j].score;
-        }
-        var average = total / allData.india.length;
-
-        var scoreObj = {
-          total: total,
-          average: average
-        };
-        scores.india.push(scoreObj);
       }
+      // Average / total sentiment calc
+
+      var total = 0;
+      for (var j = 0; j < allData.india.length; j++) {
+        total += allData.india[j].score;
+      }
+      var average = total / allData.india.length;
+
+      var scoreObj = {
+        total: total,
+        average: average
+      };
+      scores.india.push(scoreObj);
+      indSentimentScore = scoreObj.average;
+      if (indSentimentScore < mapMin) {
+        mapMin = indSentimentScore;
+      }
+      if (indSentimentScore > mapMax) {
+        mapMax = indSentimentScore;
+      }
+      indFlag = true;
+      drawMapAfterAPIIngest();
     });
   }
 
@@ -487,7 +551,7 @@ $(document).ready(function() {
     var queryURL =
       "https://newsapi.org/v2/everything?q=" +
       searchString +
-      "&language=en&sortBy=relevancy&pageSize=100&sources=rt&apiKey=8eaf501197d5464595dd31d3651fd7da";
+      "&language=en&sortBy=relevancy&pageSize=10&sources=rt&apiKey=6d89e0cfe1464879bbc8c29d636efd66";
 
     $.ajax({
       url: queryURL,
@@ -511,21 +575,29 @@ $(document).ready(function() {
         };
 
         allData.russia.push(articleObj);
-
-        // Average / total sentiment calc
-
-        var total = 0;
-        for (var j = 0; j < allData.russia.length; j++) {
-          total += allData.russia[j].score;
-        }
-        var average = total / allData.russia.length;
-
-        var scoreObj = {
-          total: total,
-          average: average
-        };
-        scores.russia.push(scoreObj);
       }
+      // Average / total sentiment calc
+
+      var total = 0;
+      for (var j = 0; j < allData.russia.length; j++) {
+        total += allData.russia[j].score;
+      }
+      var average = total / allData.russia.length;
+
+      var scoreObj = {
+        total: total,
+        average: average
+      };
+      scores.russia.push(scoreObj);
+      rusSentimentScore = scoreObj.average;
+      if (rusSentimentScore < mapMin) {
+        mapMin = rusSentimentScore;
+      }
+      if (rusSentimentScore > mapMax) {
+        mapMax = rusSentimentScore;
+      }
+      rusFlag = true;
+      drawMapAfterAPIIngest();
     });
   }
 
