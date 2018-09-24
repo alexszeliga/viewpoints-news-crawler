@@ -1,69 +1,70 @@
 .grid-container {
-  background-color: white;
+    background-color: white;
 }
 
 #map-container {
-  height: 100%;
-  width: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 0;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 0;
 }
 
 #map-container path:hover {
-  stroke-width: 7px;
+    stroke-width: 7px;
 }
 
 .content-box {
-  position: relative;
-  background-color: white;
-  border: 1px solid black;
-  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+    position: relative;
+    background-color: white;
+    border: 1px solid black;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
 }
 
 #map-container path:hover {
-  stroke-width: 5px;
+    stroke-width: 5px;
 }
 
 .map-control {
-  background-color: white;
-  border: 1px solid black;
-  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+    background-color: white;
+    border: 1px solid black;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
 }
 
 .logo-container {
-  position: relative;
+    position: relative;
 }
 
 .logo-text {
-  font-size: 72px;
-  /* font-family: "Pacifico", cursive; */
-  font-family: "Notable", sans-serif;
-  -webkit-text-stroke-width: 1px;
-  -webkit-text-stroke-color: black;
-  color: darkgrey;
-  line-height: 1;
-  letter-spacing: -2.5px;
-  text-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+    font-size: 72px;
+    /* font-family: "Pacifico", cursive; */
+    font-family: "Notable", sans-serif;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: black;
+    color: darkgrey;
+    line-height: 1;
+    letter-spacing: -2.5px;
+    text-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
 }
 
-.tweet-table {
-  position: absolute;
-  bottom: 0;
-  top: 0;
-  left: 0;
-  right: 0;
+/* .tweet-table {
+    position: absolute;
+    bottom: 0;
+    top: 0;
+    left: 0;
+    right: 0;
 }
 
 .tweet-table-box {
-  position: relative;
-}
+    position: relative;
+} */
 
 .modalBox {
-  background-color: white;
-  z-index: 1000;
-  padding: 10px;
-  border: 1px solid black;
-  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+    background-color: white;
+    z-index: 1000;
+    padding: 10px;
+    border: 1px solid black;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+    overflow-y: scroll;
 }
