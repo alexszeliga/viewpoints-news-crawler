@@ -374,7 +374,7 @@ function drawRegionsMap() {
         }
 
         break;
-      case "india":
+      case "India":
         console.log(allData.india);
         console.log(scores.india);
         for (var i = 0; i < allData.india.length; i++) {
