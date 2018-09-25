@@ -1,5 +1,6 @@
 // Script to pull in news sources from NewsAPI by country and then run sentiment analysis and store data in allData.
 // 6d89e0cfe1464879bbc8c29d636efd66
+var sentScoreArray = [];
 $(document).ready(function() {
   // ------------------------VARIABLES------------------------
 
@@ -9,7 +10,7 @@ $(document).ready(function() {
     canada: [],
     australia: [],
     ireland: [],
-    isreal: [],
+    israel: [],
     usa: [],
     india: [],
     russia: []
@@ -21,7 +22,7 @@ $(document).ready(function() {
     canada: [],
     australia: [],
     ireland: [],
-    isreal: [],
+    israel: [],
     usa: [],
     india: [],
     russia: []
@@ -37,11 +38,11 @@ $(document).ready(function() {
     canadaNews();
     australiaNews();
     irelandNews();
-    isrealNews();
+    israelNews();
     usaNews();
     indiaNews();
     russiaNews();
-
+    console.log(window.sentScoreArray);
     //console.log(allData);
     //console.log(scores);
   });
@@ -99,13 +100,8 @@ $(document).ready(function() {
         average: average
       };
       scores.qatar.push(scoreObj);
+      sentScoreArray.push(scoreObj.average);
       qatSentimentScore = scoreObj.average;
-      if (qatSentimentScore < mapMin) {
-        mapMin = qatSentimentScore;
-      }
-      if (qatSentimentScore > mapMax) {
-        mapMax = qatSentimentScore;
-      }
       qatFlag = true;
       drawMapAfterAPIIngest();
     });
@@ -160,13 +156,8 @@ $(document).ready(function() {
         average: average
       };
       scores.uk.push(scoreObj);
+      sentScoreArray.push(scoreObj.average);
       ukSentimentScore = scoreObj.average;
-      if (ukSentimentScore < mapMin) {
-        mapMin = ukSentimentScore;
-      }
-      if (ukSentimentScore > mapMax) {
-        mapMax = ukSentimentScore;
-      }
       ukFlag = true;
     });
   }
@@ -220,13 +211,8 @@ $(document).ready(function() {
         average: average
       };
       scores.canada.push(scoreObj);
+      sentScoreArray.push(scoreObj.average);
       canSentimentScore = scoreObj.average;
-      if (canSentimentScore < mapMin) {
-        mapMin = canSentimentScore;
-      }
-      if (canSentimentScore > mapMax) {
-        mapMax = canSentimentScore;
-      }
       canFlag = true;
       drawMapAfterAPIIngest();
     });
@@ -281,13 +267,8 @@ $(document).ready(function() {
         average: average
       };
       scores.australia.push(scoreObj);
+      sentScoreArray.push(scoreObj.average);
       ausSentimentScore = scoreObj.average;
-      if (ausSentimentScore < mapMin) {
-        mapMin = ausSentimentScore;
-      }
-      if (ausSentimentScore > mapMax) {
-        mapMax = ausSentimentScore;
-      }
       ausFlag = true;
       drawMapAfterAPIIngest();
     });
@@ -344,21 +325,16 @@ $(document).ready(function() {
         average: average
       };
       scores.ireland.push(scoreObj);
+      sentScoreArray.push(scoreObj.average);
       ireSentimentScore = scoreObj.average;
-      if (ireSentimentScore < mapMin) {
-        mapMin = ireSentimentScore;
-      }
-      if (ireSentimentScore > mapMax) {
-        mapMax = ireSentimentScore;
-      }
       ireFlag = true;
       drawMapAfterAPIIngest();
     });
   }
 
-  function isrealNews() {
-    allData.isreal = [];
-    scores.isreal = [];
+  function israelNews() {
+    allData.israel = [];
+    scores.israel = [];
 
     var searchString = $("#topicInput")
       .val()
@@ -390,30 +366,26 @@ $(document).ready(function() {
           image: response.articles[i].urlToImage
         };
 
-        allData.isreal.push(articleObj);
+        allData.israel.push(articleObj);
       }
       // Average / total sentiment calc
 
       var total = 0;
-      for (var j = 0; j < allData.isreal.length; j++) {
-        total += allData.isreal[j].score;
+      for (var j = 0; j < allData.israel.length; j++) {
+        total += allData.israel[j].score;
       }
-      var average = total / allData.isreal.length;
+      var average = total / allData.israel.length;
 
       var scoreObj = {
         total: total,
         average: average
       };
-      scores.isreal.push(scoreObj);
+      scores.israel.push(scoreObj);
       isrSentimentScore = scoreObj.average;
-      if (isrSentimentScore < mapMin) {
-        mapMin = isrSentimentScore;
-      }
-      if (isrSentimentScore > mapMax) {
-        mapMax = isrSentimentScore;
-      }
+      sentScoreArray.push(scoreObj.average);
       isrFlag = true;
-      console.log("isrSentimentScore: " + isrSentimentScore);
+      // console.log("isrSentimentScore: " + isrSentimentScore);
+      console.log();
       drawMapAfterAPIIngest();
     });
   }
@@ -467,13 +439,8 @@ $(document).ready(function() {
         average: average
       };
       scores.usa.push(scoreObj);
+      sentScoreArray.push(scoreObj.average);
       usaSentimentScore = scoreObj.average;
-      if (usaSentimentScore < mapMin) {
-        mapMin = usaSentimentScore;
-      }
-      if (usaSentimentScore > mapMax) {
-        mapMax = usaSentimentScore;
-      }
       usaFlag = true;
       drawMapAfterAPIIngest();
     });
@@ -529,12 +496,7 @@ $(document).ready(function() {
       };
       scores.india.push(scoreObj);
       indSentimentScore = scoreObj.average;
-      if (indSentimentScore < mapMin) {
-        mapMin = indSentimentScore;
-      }
-      if (indSentimentScore > mapMax) {
-        mapMax = indSentimentScore;
-      }
+      sentScoreArray.push(scoreObj.average);
       indFlag = true;
       drawMapAfterAPIIngest();
     });
@@ -590,12 +552,7 @@ $(document).ready(function() {
       };
       scores.russia.push(scoreObj);
       rusSentimentScore = scoreObj.average;
-      if (rusSentimentScore < mapMin) {
-        mapMin = rusSentimentScore;
-      }
-      if (rusSentimentScore > mapMax) {
-        mapMax = rusSentimentScore;
-      }
+      sentScoreArray.push(scoreObj.average);
       rusFlag = true;
       drawMapAfterAPIIngest();
     });
