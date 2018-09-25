@@ -338,6 +338,8 @@ var mapMin = 0;
 var mapMax = 0;
 
 function drawMapAfterAPIIngest() {
+  // remove old result table:
+  $(".country-table-container").remove();
   // determine if all AJAX calls are complete
   if (
     qatFlag &&
@@ -364,7 +366,7 @@ function drawMapAfterAPIIngest() {
     drawRegionsMap();
 
     // what also happens after api ingest? add table of scores
-    // $(".country-table-container").empyty();
+
     var countryTableContainer = $("<div class='country-table-container'>");
     var countryTable = $("<table>");
     countryTable.addClass("table");
