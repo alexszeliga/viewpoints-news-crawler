@@ -1,4 +1,5 @@
 function popModal(userMapInput) {
+  $("div").remove(".modalBox");
   var modalBox = $("<div>");
   var closeButton = $("<button>");
   var modalTable = $("<table>");
@@ -34,7 +35,7 @@ function popModal(userMapInput) {
         newCellTitle.append(
           "<a href=" +
             allData.russia[i].url +
-            ">" +
+            " target='_blank'>" +
             allData.russia[i].title +
             "</a>"
         );
@@ -66,7 +67,7 @@ function popModal(userMapInput) {
         newCellTitle.append(
           "<a href=" +
             allData.canada[i].url +
-            ">" +
+            " target='_blank'>" +
             allData.canada[i].title +
             "</a>"
         );
@@ -99,7 +100,7 @@ function popModal(userMapInput) {
         newCellTitle.append(
           "<a href=" +
             allData.qatar[i].url +
-            ">" +
+            " target='_blank'>" +
             allData.qatar[i].title +
             "</a>"
         );
@@ -130,7 +131,11 @@ function popModal(userMapInput) {
             " alt='article image' class='img-thumbnail'>"
         );
         newCellTitle.append(
-          "<a href=" + allData.uk[i].url + ">" + allData.uk[i].title + "</a>"
+          "<a href=" +
+            allData.uk[i].url +
+            " target='_blank'>" +
+            allData.uk[i].title +
+            "</a>"
         );
         newCellScore.text(allData.uk[i].score);
         newCellSummary.text(allData.uk[i].description);
@@ -161,7 +166,7 @@ function popModal(userMapInput) {
         newCellTitle.append(
           "<a href=" +
             allData.australia[i].url +
-            ">" +
+            " target='_blank'>" +
             allData.australia[i].title +
             "</a>"
         );
@@ -194,7 +199,7 @@ function popModal(userMapInput) {
         newCellTitle.append(
           "<a href=" +
             allData.ireland[i].url +
-            ">" +
+            " target='_blank'>" +
             allData.ireland[i].title +
             "</a>"
         );
@@ -227,7 +232,7 @@ function popModal(userMapInput) {
         newCellTitle.append(
           "<a href=" +
             allData.israel[i].url +
-            ">" +
+            " target='_blank'>" +
             allData.israel[i].title +
             "</a>"
         );
@@ -258,7 +263,11 @@ function popModal(userMapInput) {
             " alt='article image' class='img-thumbnail'>"
         );
         newCellTitle.append(
-          "<a href=" + allData.usa[i].url + ">" + allData.usa[i].title + "</a>"
+          "<a href=" +
+            allData.usa[i].url +
+            " target='_blank'>" +
+            allData.usa[i].title +
+            "</a>"
         );
         newCellScore.text(allData.usa[i].score);
         newCellSummary.text(allData.usa[i].description);
@@ -272,7 +281,7 @@ function popModal(userMapInput) {
       }
 
       break;
-    case "india":
+    case "India":
       // console.log(allData.india);
       //  console.log(scores.india);
       for (var i = 0; i < allData.india.length; i++) {
@@ -289,7 +298,7 @@ function popModal(userMapInput) {
         newCellTitle.append(
           "<a href=" +
             allData.india[i].url +
-            ">" +
+            " target='_blank'>" +
             allData.india[i].title +
             "</a>"
         );
