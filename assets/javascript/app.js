@@ -78,7 +78,7 @@ function drawRegionsMap() {
     defaultColor: "#d3d3d3",
     displayMode: "regions",
     legend: { textStyle: { color: "black", fontSize: 20 } },
-    legend: { numberFormat: "#%" },
+    legend: { numberFormat: "#" },
     region: "world",
     resolution: "countries",
     keepAspectRatio: true
