@@ -1,5 +1,5 @@
 // Script to pull in news sources from NewsAPI by country and then run sentiment analysis and store data in allData.
-// 6d89e0cfe1464879bbc8c29d636efd66
+// 8eaf501197d5464595dd31d3651fd7da
 var sentScoreArray = [];
 $(document).ready(function() {
   // ------------------------VARIABLES------------------------
@@ -62,7 +62,7 @@ $(document).ready(function() {
     var queryURL =
       "https://newsapi.org/v2/everything?q=" +
       searchString +
-      "&language=en&sortBy=relevancy&pageSize=10&sources=al-jazeera-english&apiKey=6d89e0cfe1464879bbc8c29d636efd66";
+      "&language=en&sortBy=relevancy&pageSize=10&sources=al-jazeera-english&apiKey=8eaf501197d5464595dd31d3651fd7da";
 
     $.ajax({
       url: queryURL,
@@ -93,8 +93,12 @@ $(document).ready(function() {
       for (var j = 0; j < allData.qatar.length; j++) {
         total += allData.qatar[j].score;
       }
-      var average = total / allData.qatar.length;
-
+      var average = Math.floor((total / allData.qatar.length) * 100);
+      // var average = total / allData.qatar.length;
+      if (isNaN(average)) {
+        total = 0;
+        average = 0;
+      }
       var scoreObj = {
         total: total,
         average: average
@@ -118,7 +122,7 @@ $(document).ready(function() {
     var queryURL =
       "https://newsapi.org/v2/everything?q=" +
       searchString +
-      "&language=en&sortBy=relevancy&pageSize=10&sources=cbc-news&apiKey=6d89e0cfe1464879bbc8c29d636efd66";
+      "&language=en&sortBy=relevancy&pageSize=10&sources=cbc-news&apiKey=8eaf501197d5464595dd31d3651fd7da";
 
     $.ajax({
       url: queryURL,
@@ -149,8 +153,12 @@ $(document).ready(function() {
       for (var j = 0; j < allData.uk.length; j++) {
         total += allData.uk[j].score;
       }
-      var average = total / allData.uk.length;
-
+      var average = Math.floor((total / allData.uk.length) * 100);
+      // var average = total / allData.uk.length;
+      if (isNaN(average)) {
+        total = 0;
+        average = 0;
+      }
       var scoreObj = {
         total: total,
         average: average
@@ -173,7 +181,7 @@ $(document).ready(function() {
     var queryURL =
       "https://newsapi.org/v2/everything?q=" +
       searchString +
-      "&language=en&sortBy=relevancy&pageSize=10&sources=the-globe-and-mail&apiKey=6d89e0cfe1464879bbc8c29d636efd66";
+      "&language=en&sortBy=relevancy&pageSize=10&sources=the-globe-and-mail&apiKey=8eaf501197d5464595dd31d3651fd7da";
 
     $.ajax({
       url: queryURL,
@@ -204,8 +212,12 @@ $(document).ready(function() {
       for (var j = 0; j < allData.canada.length; j++) {
         total += allData.canada[j].score;
       }
-      var average = total / allData.canada.length;
-
+      var average = Math.floor((total / allData.canada.length) * 100);
+      // var average = total / allData.canada.length;
+      if (isNaN(average)) {
+        total = 0;
+        average = 0;
+      }
       var scoreObj = {
         total: total,
         average: average
@@ -229,7 +241,7 @@ $(document).ready(function() {
     var queryURL =
       "https://newsapi.org/v2/everything?q=" +
       searchString +
-      "&language=en&sortBy=relevancy&pageSize=10&sources=abc-news-au&apiKey=6d89e0cfe1464879bbc8c29d636efd66";
+      "&language=en&sortBy=relevancy&pageSize=10&sources=abc-news-au&apiKey=8eaf501197d5464595dd31d3651fd7da";
 
     $.ajax({
       url: queryURL,
@@ -260,8 +272,12 @@ $(document).ready(function() {
       for (var j = 0; j < allData.australia.length; j++) {
         total += allData.australia[j].score;
       }
-      var average = total / allData.australia.length;
-
+      var average = Math.floor((total / allData.australia.length) * 100);
+      // var average = total / allData.australia.length;
+      if (isNaN(average)) {
+        total = 0;
+        average = 0;
+      }
       var scoreObj = {
         total: total,
         average: average
@@ -287,7 +303,7 @@ $(document).ready(function() {
     var queryURL =
       "https://newsapi.org/v2/everything?q=" +
       searchString +
-      "&language=en&sortBy=relevancy&pageSize=10&sources=the-irish-times&apiKey=6d89e0cfe1464879bbc8c29d636efd66";
+      "&language=en&sortBy=relevancy&pageSize=10&sources=the-irish-times&apiKey=8eaf501197d5464595dd31d3651fd7da";
 
     $.ajax({
       url: queryURL,
@@ -318,8 +334,12 @@ $(document).ready(function() {
       for (var j = 0; j < allData.ireland.length; j++) {
         total += allData.ireland[j].score;
       }
-      var average = total / allData.ireland.length;
-
+      var average = Math.floor((total / allData.ireland.length) * 100);
+      // var average = total / allData.ireland.length;
+      if (isNaN(average)) {
+        total = 0;
+        average = 0;
+      }
       var scoreObj = {
         total: total,
         average: average
@@ -343,7 +363,7 @@ $(document).ready(function() {
     var queryURL =
       "https://newsapi.org/v2/everything?q=" +
       searchString +
-      "&language=en&sortBy=relevancy&pageSize=10&sources=the-jerusalem-post&apiKey=6d89e0cfe1464879bbc8c29d636efd66";
+      "&language=en&sortBy=relevancy&pageSize=10&sources=the-jerusalem-post&apiKey=8eaf501197d5464595dd31d3651fd7da";
 
     $.ajax({
       url: queryURL,
@@ -374,8 +394,12 @@ $(document).ready(function() {
       for (var j = 0; j < allData.israel.length; j++) {
         total += allData.israel[j].score;
       }
-      var average = total / allData.israel.length;
-
+      var average = Math.floor((total / allData.israel.length) * 100);
+      // var average = total / allData.israel.length;
+      if (isNaN(average)) {
+        total = 0;
+        average = 0;
+      }
       var scoreObj = {
         total: total,
         average: average
@@ -401,7 +425,7 @@ $(document).ready(function() {
     var queryURL =
       "https://newsapi.org/v2/everything?q=" +
       searchString +
-      "&language=en&sortBy=relevancy&pageSize=10&sources=the-new-york-times&apiKey=6d89e0cfe1464879bbc8c29d636efd66";
+      "&language=en&sortBy=relevancy&pageSize=10&sources=the-new-york-times&apiKey=8eaf501197d5464595dd31d3651fd7da";
 
     $.ajax({
       url: queryURL,
@@ -432,8 +456,12 @@ $(document).ready(function() {
       for (var j = 0; j < allData.usa.length; j++) {
         total += allData.usa[j].score;
       }
-      var average = total / allData.usa.length;
-
+      var average = Math.floor((total / allData.usa.length) * 100);
+      // var average = total / allData.usa.length;
+      if (isNaN(average)) {
+        total = 0;
+        average = 0;
+      }
       var scoreObj = {
         total: total,
         average: average
@@ -457,7 +485,7 @@ $(document).ready(function() {
     var queryURL =
       "https://newsapi.org/v2/everything?q=" +
       searchString +
-      "&language=en&sortBy=relevancy&pageSize=10&sources=the-times-of-india&apiKey=6d89e0cfe1464879bbc8c29d636efd66";
+      "&language=en&sortBy=relevancy&pageSize=10&sources=the-times-of-india&apiKey=8eaf501197d5464595dd31d3651fd7da";
 
     $.ajax({
       url: queryURL,
@@ -488,8 +516,12 @@ $(document).ready(function() {
       for (var j = 0; j < allData.india.length; j++) {
         total += allData.india[j].score;
       }
-      var average = total / allData.india.length;
-
+      var average = Math.floor((total / allData.india.length) * 100);
+      // var average = total / allData.india.length;
+      if (isNaN(average)) {
+        total = 0;
+        average = 0;
+      }
       var scoreObj = {
         total: total,
         average: average
@@ -513,7 +545,7 @@ $(document).ready(function() {
     var queryURL =
       "https://newsapi.org/v2/everything?q=" +
       searchString +
-      "&language=en&sortBy=relevancy&pageSize=10&sources=rt&apiKey=6d89e0cfe1464879bbc8c29d636efd66";
+      "&language=en&sortBy=relevancy&pageSize=10&sources=rt&apiKey=8eaf501197d5464595dd31d3651fd7da";
 
     $.ajax({
       url: queryURL,
@@ -544,8 +576,12 @@ $(document).ready(function() {
       for (var j = 0; j < allData.russia.length; j++) {
         total += allData.russia[j].score;
       }
-      var average = total / allData.russia.length;
-
+      var average = Math.floor((total / allData.russia.length) * 100);
+      // var average = total / allData.russia.length;
+      if (isNaN(average)) {
+        total = 0;
+        average = 0;
+      }
       var scoreObj = {
         total: total,
         average: average
