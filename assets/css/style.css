@@ -19,6 +19,10 @@ body {
     stroke-width: 7px;
 }
 
+#map-container svg path[fill^='#d3d3d3']:hover {
+  stroke-width:0px;
+}
+
 .content-box {
     position: relative;
     background-color: rgba(195, 195, 195, 0.8);
@@ -34,24 +38,20 @@ body {
     border: 1px solid black;
 }
 
-#map-container path:hover {
-    stroke-width: 5px;
-}
-
 .logo-container {
     position: relative;
 }
 
 .logo-text {
-    font-size: 72px;
-    /* font-family: "Pacifico", cursive; */
-    font-family: "Poiret One", sans-serif;
-    -webkit-text-stroke-width: 1px;
-    -webkit-text-stroke-color: black;
-    color: #00aeef;
-    line-height: 1;
-    letter-spacing: -2.5px;
-    text-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
+  font-size: 72px;
+  /* font-family: "Pacifico", cursive; */
+  font-family: 'Alegreya Sans SC', sans-serif;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: black;
+  color: black;
+  line-height: 1;
+  letter-spacing: -2.5px;
+  text-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
 }
 
 .modalBox {
