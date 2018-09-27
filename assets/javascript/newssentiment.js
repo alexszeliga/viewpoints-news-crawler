@@ -26,7 +26,26 @@ $(document).ready(function() {
     india: [],
     russia: []
   };
-
+  $(document).keydown(function(event) {
+    if (event.which == 13) {
+      event.preventDefault();
+      if (
+        $("#topicInput")
+          .val()
+          .trim() !== ""
+      ) {
+        qatarNews();
+        ukNews();
+        canadaNews();
+        australiaNews();
+        irelandNews();
+        israelNews();
+        usaNews();
+        indiaNews();
+        russiaNews();
+      }
+    }
+  });
   // ------------------------ON CLICK EVENT HANDLE------------------------
 
   $("#submitButton").on("click", function(event) {
@@ -41,9 +60,6 @@ $(document).ready(function() {
     usaNews();
     indiaNews();
     russiaNews();
-    console.log(window.sentScoreArray);
-    //console.log(allData);
-    //console.log(scores);
   });
 
   // ------------------------UNDERLYING FUNCTIONS------------------------
