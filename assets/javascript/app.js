@@ -1,18 +1,26 @@
 function popModal(userMapInput) {
-  $("div").remove(".modalBox");
+  $("div").remove(".modalWrap");
+  var modalWrap = $("<div>");
   var modalBox = $("<div>");
+  var modalBoxBottom = $("<div>");
   var closeButton = $("<button>");
   var modalTable = $("<table>");
-  modalTable.addClass("table");
-  modalTable.append(
-    "<tr><th>Pic</th><th>Title</th><th>Score</th><th>Summary</th></tr>"
+  var noArticlesReturned = $(
+    "<div>Your search returned zero articles from this country</div>"
   );
+  modalTable.addClass("table");
+  modalWrap.addClass("modalWrap");
+
   closeButton.text("Close");
   closeButton.addClass("closeModal close");
   modalBox.text(userMapInput);
   modalBox.addClass("modalBox");
-  modalBox.append(closeButton, modalTable);
-  $(".grid-container").append(modalBox);
+  modalBoxBottom.addClass("modalBoxBottom");
+  modalBox.append(closeButton);
+  modalBoxBottom.append(modalTable);
+  modalWrap.append(modalBox, modalBoxBottom);
+  $(".grid-container").append(modalWrap);
+
   // console.log(modalBox);
   // console.log(userMapInput);
   // console.log(scores);
@@ -21,298 +29,353 @@ function popModal(userMapInput) {
       // console.log(allData.russia);
       // make table row with A small pic, the article title linked to the article, the sentiment score, ??the summary??
       // console.log(scores.russia);
-      for (var i = 0; i < allData.russia.length; i++) {
-        var newTableRow = $("<tr>");
-        var newCellPic = $("<td>");
-        var newCellTitle = $("<td>");
-        var newCellScore = $("<td>");
-        var newCellSummary = $("<td>");
-        newCellPic.append(
-          "<img src=" +
-            allData.russia[i].image +
-            " alt='article image' class='img-thumbnail'>"
+      if (allData.russia.length !== 0) {
+        modalTable.append(
+          "<tr><th></th><th></th><th>Sentiment Score</th><th>Summary</th></tr>"
         );
-        newCellTitle.append(
-          "<a href=" +
-            allData.russia[i].url +
-            " target='_blank'>" +
-            allData.russia[i].title +
-            "</a>"
-        );
-        newCellScore.text(allData.russia[i].score);
-        newCellSummary.text(allData.russia[i].description);
-        newTableRow.append(
-          newCellPic,
-          newCellTitle,
-          newCellScore,
-          newCellSummary
-        );
-        modalTable.append(newTableRow);
+        for (var i = 0; i < allData.russia.length; i++) {
+          var newTableRow = $("<tr>");
+          var newCellPic = $("<td>");
+          var newCellTitle = $("<td>");
+          var newCellScore = $("<td>");
+          var newCellSummary = $("<td>");
+          newCellPic.append(
+            "<img src=" +
+              allData.russia[i].image +
+              " alt='article image' class='img-thumbnail'>"
+          );
+          newCellTitle.append(
+            "<a href=" +
+              allData.russia[i].url +
+              " target='_blank'>" +
+              allData.russia[i].title +
+              "</a>"
+          );
+          newCellScore.text(allData.russia[i].score);
+          newCellSummary.text(allData.russia[i].description);
+          newTableRow.append(
+            newCellPic,
+            newCellTitle,
+            newCellScore,
+            newCellSummary
+          );
+          modalTable.append(newTableRow);
+        }
+      } else {
+        modalBoxBottom.append(noArticlesReturned);
       }
       break;
     case "Canada":
       // console.log(allData.canada);
       // console.log(scores.canada);
-      for (var i = 0; i < allData.canada.length; i++) {
-        var newTableRow = $("<tr>");
-        var newCellPic = $("<td>");
-        var newCellTitle = $("<td>");
-        var newCellScore = $("<td>");
-        var newCellSummary = $("<td>");
-        newCellPic.append(
-          "<img src=" +
-            allData.canada[i].image +
-            " alt='article image' class='img-thumbnail'>"
+      if (allData.canada.length !== 0) {
+        modalTable.append(
+          "<tr><th></th><th></th><th>Sentiment Score</th><th>Summary</th></tr>"
         );
-        newCellTitle.append(
-          "<a href=" +
-            allData.canada[i].url +
-            " target='_blank'>" +
-            allData.canada[i].title +
-            "</a>"
-        );
-        newCellScore.text(allData.canada[i].score);
-        newCellSummary.text(allData.canada[i].description);
-        newTableRow.append(
-          newCellPic,
-          newCellTitle,
-          newCellScore,
-          newCellSummary
-        );
-        modalTable.append(newTableRow);
+        for (var i = 0; i < allData.canada.length; i++) {
+          var newTableRow = $("<tr>");
+          var newCellPic = $("<td>");
+          var newCellTitle = $("<td>");
+          var newCellScore = $("<td>");
+          var newCellSummary = $("<td>");
+          newCellPic.append(
+            "<img src=" +
+              allData.canada[i].image +
+              " alt='article image' class='img-thumbnail'>"
+          );
+          newCellTitle.append(
+            "<a href=" +
+              allData.canada[i].url +
+              " target='_blank'>" +
+              allData.canada[i].title +
+              "</a>"
+          );
+          newCellScore.text(allData.canada[i].score);
+          newCellSummary.text(allData.canada[i].description);
+          newTableRow.append(
+            newCellPic,
+            newCellTitle,
+            newCellScore,
+            newCellSummary
+          );
+          modalTable.append(newTableRow);
+        }
+      } else {
+        modalBoxBottom.append(noArticlesReturned);
       }
-
       break;
     case "Qatar":
       // console.log(allData.qatar);
       // console.log(scores.qatar);
-      for (var i = 0; i < allData.qatar.length; i++) {
-        var newTableRow = $("<tr>");
-        var newCellPic = $("<td>");
-        var newCellTitle = $("<td>");
-        var newCellScore = $("<td>");
-        var newCellSummary = $("<td>");
-        newCellPic.append(
-          "<img src=" +
-            allData.qatar[i].image +
-            " alt='article image' class='img-thumbnail'>"
+      if (allData.qatar.length !== 0) {
+        modalTable.append(
+          "<tr><th></th><th></th><th>Sentiment Score</th><th>Summary</th></tr>"
         );
-        newCellTitle.append(
-          "<a href=" +
-            allData.qatar[i].url +
-            " target='_blank'>" +
-            allData.qatar[i].title +
-            "</a>"
-        );
-        newCellScore.text(allData.qatar[i].score);
-        newCellSummary.text(allData.qatar[i].description);
-        newTableRow.append(
-          newCellPic,
-          newCellTitle,
-          newCellScore,
-          newCellSummary
-        );
-        modalTable.append(newTableRow);
+        for (var i = 0; i < allData.qatar.length; i++) {
+          var newTableRow = $("<tr>");
+          var newCellPic = $("<td>");
+          var newCellTitle = $("<td>");
+          var newCellScore = $("<td>");
+          var newCellSummary = $("<td>");
+          newCellPic.append(
+            "<img src=" +
+              allData.qatar[i].image +
+              " alt='article image' class='img-thumbnail'>"
+          );
+          newCellTitle.append(
+            "<a href=" +
+              allData.qatar[i].url +
+              " target='_blank'>" +
+              allData.qatar[i].title +
+              "</a>"
+          );
+          newCellScore.text(allData.qatar[i].score);
+          newCellSummary.text(allData.qatar[i].description);
+          newTableRow.append(
+            newCellPic,
+            newCellTitle,
+            newCellScore,
+            newCellSummary
+          );
+          modalTable.append(newTableRow);
+        }
+      } else {
+        modalBoxBottom.append(noArticlesReturned);
       }
-
       break;
     case "United Kingdom":
       // console.log(allData.uk);
       // console.log(scores.uk);
-      for (var i = 0; i < allData.uk.length; i++) {
-        var newTableRow = $("<tr>");
-        var newCellPic = $("<td>");
-        var newCellTitle = $("<td>");
-        var newCellScore = $("<td>");
-        var newCellSummary = $("<td>");
-        newCellPic.append(
-          "<img src=" +
-            allData.uk[i].image +
-            " alt='article image' class='img-thumbnail'>"
+      if (allData.uk.length !== 0) {
+        modalTable.append(
+          "<tr><th></th><th></th><th>Sentiment Score</th><th>Summary</th></tr>"
         );
-        newCellTitle.append(
-          "<a href=" +
-            allData.uk[i].url +
-            " target='_blank'>" +
-            allData.uk[i].title +
-            "</a>"
-        );
-        newCellScore.text(allData.uk[i].score);
-        newCellSummary.text(allData.uk[i].description);
-        newTableRow.append(
-          newCellPic,
-          newCellTitle,
-          newCellScore,
-          newCellSummary
-        );
-        modalTable.append(newTableRow);
+        for (var i = 0; i < allData.uk.length; i++) {
+          var newTableRow = $("<tr>");
+          var newCellPic = $("<td>");
+          var newCellTitle = $("<td>");
+          var newCellScore = $("<td>");
+          var newCellSummary = $("<td>");
+          newCellPic.append(
+            "<img src=" +
+              allData.uk[i].image +
+              " alt='article image' class='img-thumbnail'>"
+          );
+          newCellTitle.append(
+            "<a href=" +
+              allData.uk[i].url +
+              " target='_blank'>" +
+              allData.uk[i].title +
+              "</a>"
+          );
+          newCellScore.text(allData.uk[i].score);
+          newCellSummary.text(allData.uk[i].description);
+          newTableRow.append(
+            newCellPic,
+            newCellTitle,
+            newCellScore,
+            newCellSummary
+          );
+          modalTable.append(newTableRow);
+        }
+      } else {
+        modalBoxBottom.append(noArticlesReturned);
       }
-
       break;
     case "Australia":
       // console.log(allData.australia);
       // console.log(scores.australia);
-      for (var i = 0; i < allData.australia.length; i++) {
-        var newTableRow = $("<tr>");
-        var newCellPic = $("<td>");
-        var newCellTitle = $("<td>");
-        var newCellScore = $("<td>");
-        var newCellSummary = $("<td>");
-        newCellPic.append(
-          "<img src=" +
-            allData.australia[i].image +
-            " alt='article image' class='img-thumbnail'>"
+      if (allData.australia.length !== 0) {
+        modalTable.append(
+          "<tr><th></th><th></th><th>Sentiment Score</th><th>Summary</th></tr>"
         );
-        newCellTitle.append(
-          "<a href=" +
-            allData.australia[i].url +
-            " target='_blank'>" +
-            allData.australia[i].title +
-            "</a>"
-        );
-        newCellScore.text(allData.australia[i].score);
-        newCellSummary.text(allData.australia[i].description);
-        newTableRow.append(
-          newCellPic,
-          newCellTitle,
-          newCellScore,
-          newCellSummary
-        );
-        modalTable.append(newTableRow);
+        for (var i = 0; i < allData.australia.length; i++) {
+          var newTableRow = $("<tr>");
+          var newCellPic = $("<td>");
+          var newCellTitle = $("<td>");
+          var newCellScore = $("<td>");
+          var newCellSummary = $("<td>");
+          newCellPic.append(
+            "<img src=" +
+              allData.australia[i].image +
+              " alt='article image' class='img-thumbnail'>"
+          );
+          newCellTitle.append(
+            "<a href=" +
+              allData.australia[i].url +
+              " target='_blank'>" +
+              allData.australia[i].title +
+              "</a>"
+          );
+          newCellScore.text(allData.australia[i].score);
+          newCellSummary.text(allData.australia[i].description);
+          newTableRow.append(
+            newCellPic,
+            newCellTitle,
+            newCellScore,
+            newCellSummary
+          );
+          modalTable.append(newTableRow);
+        }
+      } else {
+        modalBoxBottom.append(noArticlesReturned);
       }
-
       break;
     case "Ireland":
       // console.log(allData.ireland);
       // console.log(scores.ireland);
-      for (var i = 0; i < allData.ireland.length; i++) {
-        var newTableRow = $("<tr>");
-        var newCellPic = $("<td>");
-        var newCellTitle = $("<td>");
-        var newCellScore = $("<td>");
-        var newCellSummary = $("<td>");
-        newCellPic.append(
-          "<img src=" +
-            allData.ireland[i].image +
-            " alt='article image' class='img-thumbnail'>"
+      if (allData.ireland.length !== 0) {
+        modalTable.append(
+          "<tr><th></th><th></th><th>Sentiment Score</th><th>Summary</th></tr>"
         );
-        newCellTitle.append(
-          "<a href=" +
-            allData.ireland[i].url +
-            " target='_blank'>" +
-            allData.ireland[i].title +
-            "</a>"
-        );
-        newCellScore.text(allData.ireland[i].score);
-        newCellSummary.text(allData.ireland[i].description);
-        newTableRow.append(
-          newCellPic,
-          newCellTitle,
-          newCellScore,
-          newCellSummary
-        );
-        modalTable.append(newTableRow);
+        for (var i = 0; i < allData.ireland.length; i++) {
+          var newTableRow = $("<tr>");
+          var newCellPic = $("<td>");
+          var newCellTitle = $("<td>");
+          var newCellScore = $("<td>");
+          var newCellSummary = $("<td>");
+          newCellPic.append(
+            "<img src=" +
+              allData.ireland[i].image +
+              " alt='article image' class='img-thumbnail'>"
+          );
+          newCellTitle.append(
+            "<a href=" +
+              allData.ireland[i].url +
+              " target='_blank'>" +
+              allData.ireland[i].title +
+              "</a>"
+          );
+          newCellScore.text(allData.ireland[i].score);
+          newCellSummary.text(allData.ireland[i].description);
+          newTableRow.append(
+            newCellPic,
+            newCellTitle,
+            newCellScore,
+            newCellSummary
+          );
+          modalTable.append(newTableRow);
+        }
+      } else {
+        modalBoxBottom.append(noArticlesReturned);
       }
-
       break;
     case "Israel":
       // console.log(allData.israel);
       // console.log(scores.israel);
-      for (var i = 0; i < allData.israel.length; i++) {
-        var newTableRow = $("<tr>");
-        var newCellPic = $("<td>");
-        var newCellTitle = $("<td>");
-        var newCellScore = $("<td>");
-        var newCellSummary = $("<td>");
-        newCellPic.append(
-          "<img src=" +
-            allData.israel[i].image +
-            " alt='article image' class='img-thumbnail'>"
+      if (allData.israel.length !== 0) {
+        modalTable.append(
+          "<tr><th></th><th></th><th>Sentiment Score</th><th>Summary</th></tr>"
         );
-        newCellTitle.append(
-          "<a href=" +
-            allData.israel[i].url +
-            " target='_blank'>" +
-            allData.israel[i].title +
-            "</a>"
-        );
-        newCellScore.text(allData.israel[i].score);
-        newCellSummary.text(allData.israel[i].description);
-        newTableRow.append(
-          newCellPic,
-          newCellTitle,
-          newCellScore,
-          newCellSummary
-        );
-        modalTable.append(newTableRow);
+        for (var i = 0; i < allData.israel.length; i++) {
+          var newTableRow = $("<tr>");
+          var newCellPic = $("<td>");
+          var newCellTitle = $("<td>");
+          var newCellScore = $("<td>");
+          var newCellSummary = $("<td>");
+          newCellPic.append(
+            "<img src=" +
+              allData.israel[i].image +
+              " alt='article image' class='img-thumbnail'>"
+          );
+          newCellTitle.append(
+            "<a href=" +
+              allData.israel[i].url +
+              " target='_blank'>" +
+              allData.israel[i].title +
+              "</a>"
+          );
+          newCellScore.text(allData.israel[i].score);
+          newCellSummary.text(allData.israel[i].description);
+          newTableRow.append(
+            newCellPic,
+            newCellTitle,
+            newCellScore,
+            newCellSummary
+          );
+          modalTable.append(newTableRow);
+        }
+      } else {
+        modalBoxBottom.append(noArticlesReturned);
       }
-
       break;
     case "United States":
       // console.log(allData.usa);
       // console.log(scores.usa);
-      for (var i = 0; i < allData.usa.length; i++) {
-        var newTableRow = $("<tr>");
-        var newCellPic = $("<td>");
-        var newCellTitle = $("<td>");
-        var newCellScore = $("<td>");
-        var newCellSummary = $("<td>");
-        newCellPic.append(
-          "<img src=" +
-            allData.usa[i].image +
-            " alt='article image' class='img-thumbnail'>"
+      if (allData.usa.length !== 0) {
+        modalTable.append(
+          "<tr><th></th><th></th><th>Sentiment Score</th><th>Summary</th></tr>"
         );
-        newCellTitle.append(
-          "<a href=" +
-            allData.usa[i].url +
-            " target='_blank'>" +
-            allData.usa[i].title +
-            "</a>"
-        );
-        newCellScore.text(allData.usa[i].score);
-        newCellSummary.text(allData.usa[i].description);
-        newTableRow.append(
-          newCellPic,
-          newCellTitle,
-          newCellScore,
-          newCellSummary
-        );
-        modalTable.append(newTableRow);
+        for (var i = 0; i < allData.usa.length; i++) {
+          var newTableRow = $("<tr>");
+          var newCellPic = $("<td>");
+          var newCellTitle = $("<td>");
+          var newCellScore = $("<td>");
+          var newCellSummary = $("<td>");
+          newCellPic.append(
+            "<img src=" +
+              allData.usa[i].image +
+              " alt='article image' class='img-thumbnail'>"
+          );
+          newCellTitle.append(
+            "<a href=" +
+              allData.usa[i].url +
+              " target='_blank'>" +
+              allData.usa[i].title +
+              "</a>"
+          );
+          newCellScore.text(allData.usa[i].score);
+          newCellSummary.text(allData.usa[i].description);
+          newTableRow.append(
+            newCellPic,
+            newCellTitle,
+            newCellScore,
+            newCellSummary
+          );
+          modalTable.append(newTableRow);
+        }
+      } else {
+        modalBoxBottom.append(noArticlesReturned);
       }
-
       break;
     case "India":
       // console.log(allData.india);
       //  console.log(scores.india);
-      for (var i = 0; i < allData.india.length; i++) {
-        var newTableRow = $("<tr>");
-        var newCellPic = $("<td>");
-        var newCellTitle = $("<td>");
-        var newCellScore = $("<td>");
-        var newCellSummary = $("<td>");
-        newCellPic.append(
-          "<img src=" +
-            allData.india[i].image +
-            " alt='article image' class='img-thumbnail'>"
+      if (allData.india.length !== 0) {
+        modalTable.append(
+          "<tr><th></th><th></th><th>Sentiment Score</th><th>Summary</th></tr>"
         );
-        newCellTitle.append(
-          "<a href=" +
-            allData.india[i].url +
-            " target='_blank'>" +
-            allData.india[i].title +
-            "</a>"
-        );
-        newCellScore.text(allData.india[i].score);
-        newCellSummary.text(allData.india[i].description);
-        newTableRow.append(
-          newCellPic,
-          newCellTitle,
-          newCellScore,
-          newCellSummary
-        );
-        modalTable.append(newTableRow);
+        for (var i = 0; i < allData.india.length; i++) {
+          var newTableRow = $("<tr>");
+          var newCellPic = $("<td>");
+          var newCellTitle = $("<td>");
+          var newCellScore = $("<td>");
+          var newCellSummary = $("<td>");
+          newCellPic.append(
+            "<img src=" +
+              allData.india[i].image +
+              " alt='article image' class='img-thumbnail'>"
+          );
+          newCellTitle.append(
+            "<a href=" +
+              allData.india[i].url +
+              " target='_blank'>" +
+              allData.india[i].title +
+              "</a>"
+          );
+          newCellScore.text(allData.india[i].score);
+          newCellSummary.text(allData.india[i].description);
+          newTableRow.append(
+            newCellPic,
+            newCellTitle,
+            newCellScore,
+            newCellSummary
+          );
+          modalTable.append(newTableRow);
+        }
+      } else {
+        modalBoxBottom.append(noArticlesReturned);
       }
-
       break;
   }
 }
@@ -459,7 +522,7 @@ function drawRegionsMap() {
   var options = {
     colorAxis: {
       minValue: Math.min(...sentScoreArray),
-      colors: ["#00AEEF", "#F7F2DA", "#F26422"],
+      colors: ["#00AEEF", "#937963", "#F26422"],
       maxValue: Math.max(...sentScoreArray)
     },
     backgroundColor: { fill: "white", strokeWidth: 0 },
@@ -467,6 +530,7 @@ function drawRegionsMap() {
     defaultColor: "#d3d3d3",
     displayMode: "regions",
     legend: { textStyle: { color: "black", fontSize: 20 } },
+
     legend: { numberFormat: "#.#" },
     region: "world",
     resolution: "countries",
@@ -486,7 +550,6 @@ function drawRegionsMap() {
       // console.log("Country Clicked: " + data.getValue(selection[0].row, 0));
       // console.log("-----------");
     }
-
     var countryName = data.getValue(selection[0].row, 0);
     popModal(countryName);
   });
@@ -497,6 +560,7 @@ $(document).on("click", ".closeModal", function(event) {
   // console.log("You clicked the close button");
   $("div").remove(".modalBox");
 });
+
 $(document).on("click", ".countryTR", function(event) {
   console.log("You clicked a table row.", $(this).data("country"));
   popModal($(this).data("country"));
@@ -508,5 +572,5 @@ $(window).on("resize", function() {
 $(document).on("click", ".closeModal", function(event) {
   event.preventDefault();
   // console.log("You clicked the close button");
-  $("div").remove(".modalBox");
+  $("div").remove(".modalWrap");
 });
