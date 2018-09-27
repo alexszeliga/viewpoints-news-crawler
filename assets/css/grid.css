@@ -1,57 +1,71 @@
 .grid-container {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  display: grid;
-  grid-gap: 20px;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-  grid-template-rows: 55px 1fr 9fr 1fr;
-  overflow: hidden;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: grid;
+    grid-gap: 20px;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 55px 1fr 9fr 1fr;
+    overflow: hidden;
 }
 
 .content-box {
-  grid-column-start: 1;
-  grid-column-end: 4;
-  grid-row-start: 1;
-  grid-row-end: 2;
-  min-width: 250px;
+    grid-column-start: 1;
+    grid-column-end: 4;
+    grid-row-start: 1;
+    grid-row-end: 2;
+    min-width: 250px;
+}
+
+.icon-container {
+    grid-column-start: 8;
+    grid-column-end: 9;
+    grid-row-start: 4;
+    grid-row-end: 5;
+    z-index: 10;
 }
 
 .logo-container {
-  display: grid;
-  grid-column-start: 11;
-  grid-column-end: 13;
-  grid-row-start: 4;
-  grid-row-end: 5;
-  justify-content: end;
-  z-index: 10;
+    grid-column-start: 4;
+    grid-column-end: 13;
+    grid-row-start: 4;
+    grid-row-end: 5;
+    z-index: 10;
+    text-align: center;
 }
 
 .modalWrap {
-  grid-row-start: 1;
-  grid-row-end: 4;
-  grid-column-start: 4;
-  grid-column-end: 13;
-  display: grid;
-  grid-template-rows: 1fr 9fr;
+    grid-row-start: 1;
+    grid-row-end: 4;
+    grid-column-start: 4;
+    grid-column-end: 13;
+    display: grid;
+    grid-template-rows: 1fr 9fr;
 }
 
-.modalBox {
-  grid-row-start: 1;
-  grid-row-end: 2;
+.modalBoxTop {
+    grid-row-start: 1;
+    grid-row-end: 2;
 }
 
 .modalBoxBottom {
-  grid-row-start: 2;
-  grid-row-end: 3;
+    grid-row-start: 2;
+    grid-row-end: 3;
 }
 
 .country-table-container {
-  grid-column-start: 1;
-  grid-column-end: 4;
-  grid-row-start: 2;
-  grid-row-end: 4;
-  min-width: 200px;
+    grid-column-start: 1;
+    grid-column-end: 4;
+    grid-row-start: 2;
+    grid-row-end: 4;
+    min-width: 200px;
+}
+
+.intro-modal {
+    grid-row-start: 2;
+    grid-row-end: 4;
+    grid-column-start: 5;
+    grid-column-end: 11;
 }

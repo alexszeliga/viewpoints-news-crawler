@@ -1,7 +1,7 @@
 function popModal(userMapInput) {
   $("div").remove(".modalWrap");
   var modalWrap = $("<div>");
-  var modalBox = $("<div>");
+  var modalBoxTop = $("<div>");
   var modalBoxBottom = $("<div>");
   var closeButton = $("<button>");
   var modalTable = $("<table>");
@@ -13,12 +13,12 @@ function popModal(userMapInput) {
 
   closeButton.text("Close");
   closeButton.addClass("closeModal close");
-  modalBox.text(userMapInput);
-  modalBox.addClass("modalBox");
+  modalBoxTop.text(userMapInput);
+  modalBoxTop.addClass("modalBoxTop");
   modalBoxBottom.addClass("modalBoxBottom");
-  modalBox.append(closeButton);
+  modalBoxTop.append(closeButton);
   modalBoxBottom.append(modalTable);
-  modalWrap.append(modalBox, modalBoxBottom);
+  modalWrap.append(modalBoxTop, modalBoxBottom);
   $(".grid-container").append(modalWrap);
 
   // console.log(modalBox);
@@ -558,7 +558,7 @@ function drawRegionsMap() {
 $(document).on("click", ".closeModal", function(event) {
   event.preventDefault();
   // console.log("You clicked the close button");
-  $("div").remove(".modalBox");
+  $("div").remove(".modalWrap");
 });
 
 $(document).on("click", ".countryTR", function(event) {
