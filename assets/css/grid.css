@@ -19,11 +19,21 @@
     min-width: 200px;
 }
 
+.balloon-box {
+    display: grid;
+    grid-column-start: 6;
+    grid-column-end: 8;
+    grid-row-start: 5;
+    grid-row-end: 5;
+    justify-content: end;
+    z-index: 10;
+}
+
 .logo-container {
     display: grid;
     grid-column-start: 11;
     grid-column-end: 13;
-    grid-row-start: 4;
+    grid-row-start: 5;
     grid-row-end: 5;
     justify-content: end;
     z-index: 10;
