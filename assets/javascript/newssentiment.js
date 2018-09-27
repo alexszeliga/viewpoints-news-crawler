@@ -3,7 +3,6 @@
 var sentScoreArray = [];
 $(document).ready(function() {
   // ------------------------VARIABLES------------------------
-
   window.allData = {
     qatar: [],
     uk: [],

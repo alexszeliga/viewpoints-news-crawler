@@ -8,6 +8,17 @@
 	.st2{fill:#00AEEF;}
 	.st3{fill:#F26422;}
 </style>
+<filter id="dropshadow" height="130%">
+  <feGaussianBlur in="SourceAlpha" stdDeviation="3"/> <!-- stdDeviation is how much to blur -->
+  <feOffset dx="2" dy="2" result="offsetblur"/> <!-- how much to offset -->
+  <feComponentTransfer>
+    <feFuncA type="linear" slope="0.5"/> <!-- slope is the opacity of the shadow -->
+  </feComponentTransfer>
+  <feMerge> 
+    <feMergeNode/> <!-- this contains the offset blurred image -->
+    <feMergeNode in="SourceGraphic"/> <!-- this contains the element that the filter is applied to -->
+  </feMerge>
+</filter>
 <line class="st0" x1="247.1" y1="336.7" x2="246.4" y2="251.2"/>
 <line class="st0" x1="163.8" y1="351.7" x2="161.9" y2="249.8"/>
 <line class="st0" x1="165.5" y1="331.6" x2="175.5" y2="283.4"/>
