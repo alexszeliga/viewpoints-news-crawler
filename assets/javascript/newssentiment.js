@@ -1,5 +1,6 @@
 // Script to pull in news sources from NewsAPI by country and then run sentiment analysis and store data in allData.
-// 8eaf501197d5464595dd31d3651fd7da
+// 4af9a951ffb5416f886ace6b478c449b
+
 var sentScoreArray = [];
 $(document).ready(function() {
   // ------------------------VARIABLES------------------------
@@ -34,6 +35,7 @@ $(document).ready(function() {
           .val()
           .trim() !== ""
       ) {
+        $(".intro-modal").remove();
         qatarNews();
         ukNews();
         canadaNews();
@@ -50,7 +52,7 @@ $(document).ready(function() {
 
   $("#submitButton").on("click", function(event) {
     event.preventDefault();
-
+    $(".intro-modal").remove();
     qatarNews();
     ukNews();
     canadaNews();
@@ -77,7 +79,7 @@ $(document).ready(function() {
     var queryURL =
       "https://newsapi.org/v2/everything?q=" +
       searchString +
-      "&language=en&sortBy=relevancy&pageSize=10&sources=al-jazeera-english&apiKey=8eaf501197d5464595dd31d3651fd7da";
+      "&language=en&sortBy=relevancy&pageSize=10&sources=al-jazeera-english&apiKey=4af9a951ffb5416f886ace6b478c449b";
 
     $.ajax({
       url: queryURL,
@@ -137,7 +139,7 @@ $(document).ready(function() {
     var queryURL =
       "https://newsapi.org/v2/everything?q=" +
       searchString +
-      "&language=en&sortBy=relevancy&pageSize=10&sources=cbc-news&apiKey=8eaf501197d5464595dd31d3651fd7da";
+      "&language=en&sortBy=relevancy&pageSize=10&sources=cbc-news&apiKey=4af9a951ffb5416f886ace6b478c449b";
 
     $.ajax({
       url: queryURL,
@@ -196,7 +198,7 @@ $(document).ready(function() {
     var queryURL =
       "https://newsapi.org/v2/everything?q=" +
       searchString +
-      "&language=en&sortBy=relevancy&pageSize=10&sources=the-globe-and-mail&apiKey=8eaf501197d5464595dd31d3651fd7da";
+      "&language=en&sortBy=relevancy&pageSize=10&sources=the-globe-and-mail&apiKey=4af9a951ffb5416f886ace6b478c449b";
 
     $.ajax({
       url: queryURL,
@@ -256,7 +258,7 @@ $(document).ready(function() {
     var queryURL =
       "https://newsapi.org/v2/everything?q=" +
       searchString +
-      "&language=en&sortBy=relevancy&pageSize=10&sources=abc-news-au&apiKey=8eaf501197d5464595dd31d3651fd7da";
+      "&language=en&sortBy=relevancy&pageSize=10&sources=abc-news-au&apiKey=4af9a951ffb5416f886ace6b478c449b";
 
     $.ajax({
       url: queryURL,
@@ -318,7 +320,7 @@ $(document).ready(function() {
     var queryURL =
       "https://newsapi.org/v2/everything?q=" +
       searchString +
-      "&language=en&sortBy=relevancy&pageSize=10&sources=the-irish-times&apiKey=8eaf501197d5464595dd31d3651fd7da";
+      "&language=en&sortBy=relevancy&pageSize=10&sources=the-irish-times&apiKey=4af9a951ffb5416f886ace6b478c449b";
 
     $.ajax({
       url: queryURL,
@@ -378,7 +380,7 @@ $(document).ready(function() {
     var queryURL =
       "https://newsapi.org/v2/everything?q=" +
       searchString +
-      "&language=en&sortBy=relevancy&pageSize=10&sources=the-jerusalem-post&apiKey=8eaf501197d5464595dd31d3651fd7da";
+      "&language=en&sortBy=relevancy&pageSize=10&sources=the-jerusalem-post&apiKey=4af9a951ffb5416f886ace6b478c449b";
 
     $.ajax({
       url: queryURL,
@@ -440,7 +442,7 @@ $(document).ready(function() {
     var queryURL =
       "https://newsapi.org/v2/everything?q=" +
       searchString +
-      "&language=en&sortBy=relevancy&pageSize=10&sources=the-new-york-times&apiKey=8eaf501197d5464595dd31d3651fd7da";
+      "&language=en&sortBy=relevancy&pageSize=10&sources=the-new-york-times&apiKey=4af9a951ffb5416f886ace6b478c449b";
 
     $.ajax({
       url: queryURL,
@@ -500,7 +502,7 @@ $(document).ready(function() {
     var queryURL =
       "https://newsapi.org/v2/everything?q=" +
       searchString +
-      "&language=en&sortBy=relevancy&pageSize=10&sources=the-times-of-india&apiKey=8eaf501197d5464595dd31d3651fd7da";
+      "&language=en&sortBy=relevancy&pageSize=10&sources=the-times-of-india&apiKey=4af9a951ffb5416f886ace6b478c449b";
 
     $.ajax({
       url: queryURL,
@@ -560,7 +562,7 @@ $(document).ready(function() {
     var queryURL =
       "https://newsapi.org/v2/everything?q=" +
       searchString +
-      "&language=en&sortBy=relevancy&pageSize=10&sources=rt&apiKey=8eaf501197d5464595dd31d3651fd7da";
+      "&language=en&sortBy=relevancy&pageSize=10&sources=rt&apiKey=4af9a951ffb5416f886ace6b478c449b";
 
     $.ajax({
       url: queryURL,
